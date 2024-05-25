@@ -16,10 +16,9 @@ export const Hero: React.FC = () => {
                     Waxing bis zu dauerhafter Haarentfernung und Wimpernlifting bieten wir alles für Ihre Schönheit.
                 </p>
 
-                <a href=""
-                   className="inline-block mt-4 px-8 py-3 bg-primary text-white text-lg rounded hover:bg-pink-600 transition duration-300 capitalize">Termin
-                    buchen
-                </a>
+                <button
+                    className="inline-block px-8 py-3 bg-primary text-white text-2xl rounded hover:bg-pink-600 transition duration-300 capitalize ">Termin Buchen
+                </button>
             </div>
         </section>
     );
