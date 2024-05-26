@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Hero: React.FC = () => {
     return (
-        <section className="h-screen flex items-center justify-center bg-hero-pattern bg-cover bg-center">
+        <section className="relative h-screen flex items-center justify-center bg-hero-pattern bg-cover bg-center">
             <div className="absolute inset-0 bg-black opacity-50"></div>
             <div className="relative z-10 text-center text-white px-6 md:px-12 lg:px-24">
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-serif">
@@ -17,7 +17,7 @@ export const Hero: React.FC = () => {
                 </p>
 
                 <button
-                    className="inline-block px-8 py-3 bg-primary text-white text-2xl rounded hover:bg-pink-600 transition duration-300 capitalize ">Termin Buchen
+                    className="inline-block px-8 py-3 bg-primary text-white text-2xl rounded hover:bg-pink-600 transition duration-300 capitalize">Termin Buchen
                 </button>
             </div>
         </section>
