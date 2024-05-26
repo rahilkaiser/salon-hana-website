@@ -58,7 +58,6 @@ const MainMenu: React.FC = () => {
                                onMouseEnter={() => handleMenuHover(menu)}>
                                 {menu}
                             </a>
-
                         </li>
                     ))}
                 </ul>

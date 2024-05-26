@@ -67,7 +67,7 @@ export const StickyNavbar = () => {
                         </text>
                         <line x1="30" y1="52" x2="170" y2="52" stroke="black" stroke-width="2"/>
                         <text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" font-family="Noto Serif"
-                              font-size="17" fill="black" font-weight="400">Berlin
+                              font-size="14" fill="black" font-weight="200">Berlin
                         </text>
                     </svg>
 

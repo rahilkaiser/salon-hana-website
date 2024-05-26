@@ -11,9 +11,17 @@ export default function Home() {
 
                 <StickyNavbar/>
                 <Hero/>
-                {/*<Hero/>*/}
-                {/*<Hero/>*/}
-                {/*<Hero/>*/}
+                {/*<About/>*/}
+                {/*<Beauty Programme für Gesicht und Körper mit videopopup/>*/}
+                {/*<Behandlungen/>*/}
+                {/*<Kundenmeinungen/>*/}
+                {/*<Impressionen/>*/}
+                {/*<Produkte/>*/}
+                {/*<Aktuelles (Blog)/>*/}
+                {/*Überzeugungstext*/}
+                {/*Parallax Gesichtsbehandlung*/}
+                {/*Breadcrums*/}
+                {/*Kontakt mit Google Maps*/}
 
             </main>
         </NextUIProvider>
