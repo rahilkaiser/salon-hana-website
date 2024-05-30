@@ -1,4 +1,11 @@
+"use client";
+
+import ImageCard from "@/components/core/image-card/ImageCard";
+import CustomButton from "@/components/core/custom-button/CustomButton";
+
 export const Intro = () => {
+
+
     return (
         <div className="mx-auto max-w-screen-lg bg-white flex flex-col justify-center text-center p-8 space-y-8 mt-12">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 font-serif">
@@ -7,49 +14,26 @@ export const Intro = () => {
             <span className="block mx-auto mt-4 mb-8 w-16 h-1 bg-primary"></span>
             <div className="px-4 md:px-8 lg:px-16">
                 <p className="text-xl leading-relaxed">
-                    In unserem Kosmetik-Institut in Berlin können Sie in geschmackvollem Ambiente eine Auszeit vom Alltag nehmen, während sich ein Team von zehn ausgewiesenen Profis um Ihre Schönheit kümmert. Grosszügige Behandlungsräume, ein exklusiver Beauty-Shop und eine lauschige Innenhof-Terrasse laden zum Entspannen ein.
+                    In unserem Kosmetik-Institut in Berlin können Sie in geschmackvollem Ambiente eine Auszeit vom
+                    Alltag nehmen, während sich ein Team von zehn ausgewiesenen Profis um Ihre Schönheit kümmert.
+                    Grosszügige Behandlungsräume, ein exklusiver Beauty-Shop und eine lauschige Innenhof-Terrasse laden
+                    zum Entspannen ein.
                 </p>
             </div>
-            <div className="flex flex-col lg:flex-row justify-between items-center space-y-8 lg:space-y-0 lg:space-x-8 pt-40">
-                <div className="group relative w-full lg:w-1/3">
-                    <a href="#" className="block overflow-hidden">
-                        <img
-                            src="https://mlvj6gh278jg.i.optimole.com/cb:-M3q.40215/w:726/h:522/q:90/f:best/https://www.beautycarezuerich.ch/wp-content/uploads/2022/07/team.jpg"
-                            alt="Unser Team"
-                            className="w-full h-auto transform transition-transform duration-300 group-hover:scale-105 lg:group-hover:scale-110"
-                        />
-                        <div className="absolute bottom-0 left-0 w-full p-4 bg-white bg-opacity-75">
-                            <span className="inline-block w-8 h-1 bg-primary mr-2 align-middle"></span>
-                            <span className="text-lg font-semibold align-middle">Unser Team</span>
-                        </div>
-                    </a>
-                </div>
-                <div className="group relative w-full lg:w-1/3">
-                    <a href="#" className="block overflow-hidden">
-                        <img
-                            src="https://mlvj6gh278jg.i.optimole.com/cb:-M3q.40215/w:726/h:522/q:90/f:best/https://www.beautycarezuerich.ch/wp-content/uploads/2022/07/kabine.jpg"
-                            alt="Institut"
-                            className="w-full h-auto transform transition-transform duration-300 group-hover:scale-105 lg:group-hover:scale-110"
-                        />
-                        <div className="absolute bottom-0 left-0 w-full p-4 bg-white bg-opacity-75">
-                            <span className="inline-block w-8 h-1 bg-primary mr-2 align-middle"></span>
-                            <span className="text-lg font-semibold align-middle">Ambiente</span>
-                        </div>
-                    </a>
-                </div>
-                <div className="group relative w-full lg:w-1/3">
-                    <a href="#" className="block overflow-hidden">
-                        <img
-                            src="https://mlvj6gh278jg.i.optimole.com/cb:-M3q.40215/w:726/h:522/q:90/f:best/https://www.beautycarezuerich.ch/wp-content/uploads/2022/07/behandlungen-1.jpg"
-                            alt="Dienstleistungen"
-                            className="w-full h-auto transform transition-transform duration-300 group-hover:scale-105 lg:group-hover:scale-110"
-                        />
-                        <div className="absolute bottom-0 left-0 w-full p-4 bg-white bg-opacity-75">
-                            <span className="inline-block w-8 h-1 bg-primary mr-2 align-middle"></span>
-                            <span className="text-lg font-semibold align-middle">Dienstleistungen</span>
-                        </div>
-                    </a>
-                </div>
+            <div
+                className="flex flex-col lg:flex-row justify-between items-center space-y-8 lg:space-y-0 lg:space-x-8 pt-40">
+                <ImageCard
+                    imageUrl="https://mlvj6gh278jg.i.optimole.com/cb:-M3q.40215/w:726/h:522/q:90/f:best/https://www.beautycarezuerich.ch/wp-content/uploads/2022/07/team.jpg"
+                    title="Unser Team"
+                />
+                <ImageCard
+                    imageUrl="https://mlvj6gh278jg.i.optimole.com/cb:-M3q.40215/w:726/h:522/q:90/f:best/https://www.beautycarezuerich.ch/wp-content/uploads/2022/07/kabine.jpg"
+                    title="Ambiente"
+                />
+                <ImageCard
+                    imageUrl="https://mlvj6gh278jg.i.optimole.com/cb:-M3q.40215/w:726/h:522/q:90/f:best/https://www.beautycarezuerich.ch/wp-content/uploads/2022/07/behandlungen-1.jpg"
+                    title="Dienstleistungen"
+                />
             </div>
         </div>
     );

@@ -11,7 +11,7 @@ export const BeautySection = () => {
     };
 
     return (
-        <div className="w-full py-16 bg-white text-start">
+        <div className="w-full py-16 text-start bg-accent">
             <div className="max-w-full mx-auto px-8">
                 <div className="flex flex-col lg:flex-row items-stretch justify-between space-y-8 lg:space-y-0 lg:space-x-8 min-h-screen">
                     <div className="flex-1 p-40 flex flex-col justify-center items-start">

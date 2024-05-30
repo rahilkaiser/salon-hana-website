@@ -3,19 +3,19 @@ import {NextUIProvider} from "@nextui-org/react";
 import {StickyNavbar} from "@/components/core/navbar/StickyNavbar";
 import {Intro} from "@/components/sections/intro/Intro";
 import {BeautySection} from "@/components/sections/beauty-section/BeautySection";
+import {TreatmentSection} from "@/components/sections/treatment-section/TreatmentSection";
 
 export default function Home() {
     return (
         <NextUIProvider>
 
-            <main className="relative w-full h-full">
+            <main>
 
                 <StickyNavbar/>
                 <Hero/>
                 <Intro/>
                 <BeautySection/>
-                {/*<Beauty Programme für Gesicht und Körper mit videopopup/>*/}
-                {/*<Behandlungen/>*/}
+                <TreatmentSection/>
                 {/*<Kundenmeinungen/>*/}
                 {/*<Impressionen/>*/}
                 {/*<Produkte/>*/}
