@@ -32,9 +32,9 @@ export const StickyNavbar = () => {
 
 
     return (
-        <Navbar isBordered maxWidth="full" className="w-screen" isBlurred={true}>
+        <Navbar isBordered maxWidth="full" className="w-screen justify-center" isBlurred={true}>
 
-            <NavbarContent className="hidden sm:flex gap-4" justify="start">
+            <NavbarContent className="sm:flex gap-4" justify="start">
 
                 <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"}/>
                 <NavbarItem>
@@ -43,27 +43,25 @@ export const StickyNavbar = () => {
 
             </NavbarContent>
 
-            <NavbarContent className="hidden sm:flex gap-4" justify="center">
-                <NavbarBrand>
-                    <svg width="200" height="100" xmlns="http://www.w3.org/2000/svg" fontFamily="noto">
-                        {/*<rect width="100%" height="100%" fill="white"/>*/}
-                        <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-family="Noto Serif"
-                              font-size="25" fill="black" font-weight="500">Salon Hana
+            <NavbarContent className=" sm:flex gap-4" justify="center">
+                <NavbarBrand style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+                    <svg width="200" height="100" xmlns="http://www.w3.org/2000/svg" style={{ margin: "auto" }}>
+                        <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" fontFamily="Noto Serif"
+                              fontSize="25" fill="black" fontWeight="500">Salon Hana
                         </text>
-                        <line x1="30" y1="52" x2="170" y2="52" stroke="black" stroke-width="2"/>
-                        <text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" font-family="Noto Serif"
-                              font-size="14" fill="black" font-weight="200">Berlin
+                        <line x1="30" y1="52" x2="170" y2="52" stroke="black" strokeWidth="2"/>
+                        <text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" fontFamily="Noto Serif"
+                              fontSize="14" fill="black" fontWeight="200">Berlin
                         </text>
                     </svg>
-
-
                 </NavbarBrand>
+
             </NavbarContent>
 
             <NavbarContent justify="end">
                 <NavbarItem>
                     <button
-                        className="inline-block px-8 py-3 bg-primary text-white text-lg rounded hover:bg-pink-600 transition duration-300 capitalize">Termin
+                        className="hidden md:inline-block  px-8 py-3 bg-primary text-white text-lg rounded hover:bg-pink-600 transition duration-300 capitalize">Termin
                         Buchen
                     </button>
 
