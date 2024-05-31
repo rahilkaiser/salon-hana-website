@@ -25,11 +25,10 @@ export const StickyNavbar = () => {
     }
 
     const menuItems: MenuItem[] = [
-        { id: 1, title: 'Item 1', content: 'This is the content for Item 1' },
-        { id: 2, title: 'Item 2', content: 'This is the content for Item 2' },
-        { id: 3, title: 'Item 3', content: 'This is the content for Item 3' },
+        {id: 1, title: 'Item 1', content: 'This is the content for Item 1'},
+        {id: 2, title: 'Item 2', content: 'This is the content for Item 2'},
+        {id: 3, title: 'Item 3', content: 'This is the content for Item 3'},
     ];
-
 
 
     return (
@@ -72,76 +71,11 @@ export const StickyNavbar = () => {
             </NavbarContent>
 
             <NavbarMenu className="text-black pt-20 overflow-x-hidden overflow-y-auto">
-                    <NavbarMenuItem >
-                        <MainMenu></MainMenu>
-
-                        {/*<div className="flex">*/}
-                        {/*    <ul className="bg-gray-800 text-white w-48 p-4">*/}
-                        {/*        <li className="mb-2 cursor-pointer" onMouseEnter={() => setHoveredItem(item.id)}>*/}
-                        {/*            MainMenu Item 1*/}
-                        {/*            {hoveredItem === item.id && (*/}
-                        {/*                <ul className="absolute bg-gray-700 text-white mt-1 left-48 w-48">*/}
-                        {/*                    <li className="p-2">Submenu Item 1</li>*/}
-                        {/*                    <li className="p-2">Submenu Item 2</li>*/}
-                        {/*                    <li className="p-2">Submenu Item 3</li>*/}
-                        {/*                </ul>*/}
-                        {/*            )}*/}
-                        {/*        </li>*/}
-                        {/*        <li className="mb-2 cursor-pointer">MainMenu Item 2</li>*/}
-                        {/*        <li className="mb-2 cursor-pointer">MainMenu Item 3</li>*/}
-                        {/*    </ul>*/}
-                        {/*</div>*/}
+                <NavbarMenuItem>
+                    <MainMenu></MainMenu>
 
 
-                        {/*<div className="relative w-full ">*/}
-                        {/*    <ul className="space-y-4">*/}
-                        {/*            <li*/}
-                        {/*                key={item.id}*/}
-                        {/*                className="p-4 border border-gray-300 cursor-pointer"*/}
-                        {/*                onMouseEnter={() => setHoveredItem(item.id)}*/}
-                        {/*            >*/}
-                        {/*                {item.title}*/}
-                        {/*            </li>*/}
-                        {/*    </ul>*/}
-                        {/*    <div className="relative w-full">*/}
-                        {/*            <div*/}
-                        {/*                key={item.id}*/}
-                        {/*                className={`absolute top-0 left-0 transition-transform transform ${*/}
-                        {/*                    hoveredItem === item.id ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'*/}
-                        {/*                }`}*/}
-                        {/*            >*/}
-                        {/*                <div className="p-4 border border-gray-300  shadow-lg">*/}
-                        {/*                    {item.content}*/}
-                        {/*                </div>*/}
-                        {/*            </div>*/}
-
-                        {/*    </div>*/}
-                        {/*</div>*/}
-
-
-                        {/*<div className="flex justify-center w-1/2 mx-[30%]">*/}
-                        {/*    <ul className="flex flex-col justify-center items-start mx-auto text-center">*/}
-                        {/*        <li className="px-6 py-3">*/}
-                        {/*            <a className="text-black text-2xl cursor-pointer hover:text-primary font-serif">*/}
-                        {/*                {item}*/}
-                        {/*            </a>*/}
-                        {/*        </li>*/}
-
-                        {/*    </ul>*/}
-                        {/*    <ul className="flex flex-col justify-center items-start mx-auto text-center">*/}
-                        {/*        <li className="px-6 py-3">*/}
-
-                        {/*                <li className="">*/}
-                        {/*                    <a className="w-[150px]">Ihr Termin bei uns</a>*/}
-                        {/*                </li>*/}
-
-                        {/*        </li>*/}
-                        {/*    </ul>*/}
-
-                        {/*</div>*/}
-
-
-                    </NavbarMenuItem>
+                </NavbarMenuItem>
 
             </NavbarMenu>
         </Navbar>
