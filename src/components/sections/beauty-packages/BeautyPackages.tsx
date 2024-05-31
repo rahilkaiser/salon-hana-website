@@ -1,5 +1,5 @@
 export const BeautyPackages = () => {
     return (
-        <div></div>
+        <div>Package</div>
     );
 };

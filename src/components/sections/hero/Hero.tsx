@@ -1,24 +1,69 @@
+'use client'
 import React from 'react';
+import Image from "next/image";
+import { motion } from 'framer-motion';
 
 export const Hero: React.FC = () => {
-    return (
-        <section className="relative h-screen flex items-center justify-center bg-hero-pattern bg-cover bg-center">
-            <div className="absolute inset-0 bg-black opacity-50"></div>
-            <div className="relative z-10 text-center text-white px-6 md:px-12 lg:px-24">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-serif">
-                    Salon Hana
-                </h1>
-                <p className="text-xl md:text-2xl lg:text-3xl font-light mb-8 font-serif">
-                    Beauty-Dienstleistungen in Berlin
-                </p>
-                <p className="text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-12 font-serif">
-                    Erleben Sie die vielfältigen Beauty-Dienstleistungen bei Salon Hana in Berlin. Von Sugaring und
-                    Waxing bis zu dauerhafter Haarentfernung und Wimpernlifting bieten wir alles für Ihre Schönheit.
-                </p>
+    const textVariants = {
+        hidden: { y: 30, opacity: 0 },
+        visible: (custom: number) => ({
+            y: 0,
+            opacity: 1,
+            transition: {
+                type: 'spring',
+                damping: 20,
+                stiffness: 100,
+                delay: custom * 0.2, // each element will have incremental delay
+            }
+        }),
+    };
 
-                <button
-                    className="inline-block px-8 py-3 bg-primary text-white text-2xl rounded hover:bg-pink-600 transition duration-300 capitalize">Termin Buchen
-                </button>
+
+    return (
+        <section className="relative h-screen flex items-center justify-center">
+            <div className="absolute inset-0 overflow-hidden rounded-lg">
+                <Image
+                    src="/images/background.png"
+                    alt="Beauty Salon"
+                    layout="fill"
+                    objectFit="cover"
+                    quality={100}
+                />
+            </div>
+            <div className="absolute inset-0 bg-black opacity-60 rounded-lg"></div>
+            <div className="relative z-10 text-center text-white px-6 md:px-12 lg:px-24">
+                <motion.h1
+                    initial="hidden"
+                    animate="visible"
+                    custom={0} // No delay for the first element
+                    variants={textVariants}
+                    className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-serif">
+                    Salon Hana
+                </motion.h1>
+                <motion.p
+                    initial="hidden"
+                    animate="visible"
+                    custom={1} // Delay for the second element
+                    variants={textVariants}
+                    className="text-xl md:text-2xl lg:text-3xl font-light mb-8 font-serif">
+                    Beauty-Dienstleistungen in Berlin
+                </motion.p>
+                <motion.p
+                    initial="hidden"
+                    animate="visible"
+                    custom={2} // Further delay for the third element
+                    variants={textVariants}
+                    className="text-base md:text-xl lg:text-2xl max-w-3xl mx-auto mb-12 font-serif">
+                    Entdecken Sie bei Salon Hana in Berlin ein umfangreiches Angebot an Beauty-Dienstleistungen – von Sugaring und Waxing bis hin zu dauerhafter Haarentfernung und Wimpernlifting.
+                </motion.p>
+                {/*<motion.button*/}
+                {/*    initial="hidden"*/}
+                {/*    animate="visible"*/}
+                {/*    whileHover="hover"*/}
+                {/*    variants={buttonVariants}*/}
+                {/*    className="inline-block px-8 py-3 bg-primary text-white text-2xl rounded capitalize">*/}
+                {/*    Termin Buchen*/}
+                {/*</motion.button>*/}
             </div>
         </section>
     );

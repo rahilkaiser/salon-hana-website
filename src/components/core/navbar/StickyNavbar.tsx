@@ -10,14 +10,14 @@ import {
     NavbarMenuItem,
     NavbarMenuToggle
 } from "@nextui-org/react";
-import {Link} from "@nextui-org/link";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import MainMenu from "@/components/core/menu/MainMenu";
-
+import { motion } from "framer-motion";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCalendar} from "@fortawesome/free-solid-svg-icons";
 
 export const StickyNavbar = () => {
     let isMenuOpen = React.useState(false);
-
     interface MenuItem {
         id: number;
         title: string;
@@ -30,22 +30,38 @@ export const StickyNavbar = () => {
         {id: 3, title: 'Item 3', content: 'This is the content for Item 3'},
     ];
 
+    const buttonVariants = {
+        hidden: { scale: 0.8, opacity: 0 , x:500},
+        visible: {
+            x:0,
+            scale: 1,
+            opacity: 1,
+            transition: {
+                delay: 0.6, // Adjusted to follow after the last text
+                duration: 0.4,
+            }
+        },
+        hover: {
+            transition: { duration: 0.1 }, // smoother transition
+            backgroundColor: "#ec4899",
+            color: "#ffffff",
+        }
+    };
 
     return (
-        <Navbar isBordered maxWidth="full" className="w-screen justify-center" isBlurred={true}>
+        <Navbar isBordered maxWidth="full" className="" isBlurred={true}>
+
 
             <NavbarContent className="sm:flex gap-4" justify="start">
-
                 <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"}/>
                 <NavbarItem>
                     MENU
                 </NavbarItem>
-
             </NavbarContent>
 
-            <NavbarContent className=" sm:flex gap-4" justify="center">
-                <NavbarBrand style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-                    <svg width="200" height="100" xmlns="http://www.w3.org/2000/svg" style={{ margin: "auto" }}>
+            <NavbarContent className="gap-4" justify="center">
+                <NavbarBrand style={{width: "100%", display: "flex", justifyContent: "center"}}>
+                    <svg width="200" height="100" xmlns="http://www.w3.org/2000/svg" style={{margin: "auto"}}>
                         <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" fontFamily="Noto Serif"
                               fontSize="25" fill="black" fontWeight="500">Salon Hana
                         </text>
@@ -55,26 +71,30 @@ export const StickyNavbar = () => {
                         </text>
                     </svg>
                 </NavbarBrand>
-
             </NavbarContent>
+
 
             <NavbarContent justify="end">
                 <NavbarItem>
-                    <button
-                        className="hidden md:inline-block  px-8 py-3 bg-primary text-white text-lg rounded hover:bg-pink-600 transition duration-300 capitalize">Termin
-                        Buchen
-                    </button>
+                    <motion.button
+                        initial="hidden"
+                        animate="visible"
+                        whileHover="hover"
+                        variants={buttonVariants}
+                        className="px-4 py-2 sm:px-8 sm:py-3 bg-primary text-white text-lg rounded capitalize">
+                        <FontAwesomeIcon icon={faCalendar} className="px-2"/>
+                        <span className="hidden sm:inline">Termin Buchen</span>
 
+                    </motion.button>
                 </NavbarItem>
             </NavbarContent>
 
-            <NavbarMenu className="text-black pt-20 overflow-x-hidden overflow-y-auto">
+
+            <NavbarMenu
+                className="text-black pt-20 overflow-x-hidden overflow-y-auto">
                 <NavbarMenuItem>
                     <MainMenu></MainMenu>
-
-
                 </NavbarMenuItem>
-
             </NavbarMenu>
         </Navbar>
     );

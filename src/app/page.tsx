@@ -9,10 +9,8 @@ import {BeautyPackages} from "@/components/sections/beauty-packages/BeautyPackag
 export default function Home() {
     return (
         <NextUIProvider>
-
             <main>
-
-                <section><StickyNavbar/></section>
+                <StickyNavbar/>
                 <section><Hero/></section>
                 <section><Intro/></section>
                 <section><BeautySection/></section>
