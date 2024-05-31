@@ -11,24 +11,24 @@ export const BeautySection = () => {
     };
 
     return (
-        <div className="w-full py-16 text-start bg-accent">
-            <div className="max-w-full mx-auto px-8">
-                <div className="flex flex-col lg:flex-row items-stretch justify-between space-y-8 lg:space-y-0 lg:space-x-8 min-h-screen">
-                    <div className="flex-1 p-40 flex flex-col justify-center items-start">
-                        <h2 className="text-2xl lg:text-3xl font-semibold mb-4 text-left font-serif">
+        <div className="w-full py-8 text-start bg-accent sm:py-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-8">
+                <div className="flex flex-col-reverse lg:flex-row items-stretch justify-between space-y-8 lg:space-y-0 lg:space-x-8">
+                    <div className="flex-1 py-4 px-4 sm:p-10 flex flex-col justify-center items-start">
+                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-4 text-left font-serif">
                             Beauty Programme für<br />Gesicht und Körper
                         </h2>
-                        <p className="text-left mb-4 font-serif text-lg">
+                        <p className="text-left mb-4 font-serif text-base sm:text-lg">
                             Neben <strong>klassischen Gesichtsbehandlungen</strong> von REVIDERM, Valmont und Susanne Kaufmann bieten wir Ihnen auch spezielle <strong>Anti-Aging Behandlungen</strong> wie das Microneedling, HydraFacial, Fruchtsäurepeelings oder hochwirksame Ultraschall-Treatments an. Permanent Make-up, Wimpernlifting, Maniküre/Pediküre und Haarentfernung runden Ihr Schönheitsprogramm ab. Unser Team kümmert sich aber nicht nur um das Gesicht, sondern auch um den perfekten Body. Zum Beispiel mit der LPG Endermologie® zur Bekämpfung von Cellulite und zur Körperstraffung.
                         </p>
                         <p className="text-left mb-4">
                             Entdecken Sie <strong>Kosmetik auf höchstem Niveau</strong> bei Beauty Care Zürich und lassen Sie sich von Kopf bis Fuss verwöhnen.
                         </p>
-                        <button className="bg-white inline-block px-8 py-3 border-black border text-sm rounded hover:bg-primary hover:border-primary hover:text-white transition duration-300 capitalize font-bold">
+                        <button className="bg-white inline-block px-6 py-2 sm:px-8 sm:py-3 border-black border text-sm rounded hover:bg-primary hover:border-primary hover:text-white transition duration-300 capitalize font-bold">
                             Mehr über uns
                         </button>
                     </div>
-                    <div className="flex-1 relative p-4 overflow-hidden flex items-stretch justify-center">
+                    <div className="flex-1 relative p-4 overflow-hidden flex items-center justify-center">
                         <div className="absolute inset-0">
                             <img
                                 src="https://mlvj6gh278jg.i.optimole.com/cb:-M3q.40215/w:auto/h:auto/q:90/f:best/https://www.beautycarezuerich.ch/wp-content/uploads/2022/07/22.jpg"
@@ -36,7 +36,7 @@ export const BeautySection = () => {
                                 className="w-full h-full object-cover"
                             />
                             <button
-                                onClick={() => handleOpen()}
+                                onClick={handleOpen}
                                 className="absolute inset-0 flex items-center justify-center"
                             >
                                 <div className="bg-white rounded-full p-4">
@@ -51,28 +51,24 @@ export const BeautySection = () => {
             </div>
 
             <Modal
-                size={'5xl'}
+                size={'sm'}
                 isOpen={isOpen}
                 onClose={onClose}
             >
                 <ModalContent>
-                    {(onClose) => (
-                        <>
-                            {/*<ModalHeader className="flex flex-col gap-1">Video</ModalHeader>*/}
-                            <ModalBody>
-                                <div className="h-96 overflow-hidden ">
-                                    <iframe
-                                        className="overflow-hidden absolute inset-0"
-                                        width="100%" height="100%"
-                                        src="https://www.youtube.com/embed/c8OBF4kZg7c"
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    ></iframe>
-                                </div>
-                            </ModalBody>
-                        </>
-                    )}
+                    <ModalBody>
+                        <div className="h-96 overflow-hidden">
+                            <iframe
+                                className="w-full h-full"
+                                // src="https://www.youtube.com/embed/c8OBF4kZg7c"
+                                src="https://www.youtube.com/embed/NpEaa2P7qZI"
+                                // src="https://www.youtube.com/watch?v=NpEaa2P7qZI"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
+                    </ModalBody>
                 </ModalContent>
             </Modal>
         </div>
