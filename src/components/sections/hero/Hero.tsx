@@ -37,25 +37,25 @@ export const Hero: React.FC = () => {
                     animate="visible"
                     custom={0} // No delay for the first element
                     variants={textVariants}
-                    className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-serif">
+                    className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 font-serif">
                     Salon Hana
                 </motion.h1>
-                <motion.p
+                <motion.h3
                     initial="hidden"
                     animate="visible"
                     custom={1} // Delay for the second element
                     variants={textVariants}
-                    className="text-xl md:text-2xl lg:text-3xl font-light mb-8 font-serif">
+                    className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 font-serif">
                     Beauty-Dienstleistungen in Berlin
-                </motion.p>
-                <motion.p
+                </motion.h3>
+                <motion.h4
                     initial="hidden"
                     animate="visible"
                     custom={2} // Further delay for the third element
                     variants={textVariants}
-                    className="text-base md:text-xl lg:text-2xl max-w-3xl mx-auto mb-12 font-serif">
+                    className="text-xl md:text-2xl max-w-3xl mx-auto mb-12 font-serif">
                     Entdecken Sie bei Salon Hana in Berlin ein umfangreiches Angebot an Beauty-Dienstleistungen – von Sugaring und Waxing bis hin zu dauerhafter Haarentfernung und Wimpernlifting.
-                </motion.p>
+                </motion.h4>
                 {/*<motion.button*/}
                 {/*    initial="hidden"*/}
                 {/*    animate="visible"*/}
