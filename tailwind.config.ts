@@ -24,8 +24,10 @@ const config: Config = {
       'hero-pattern': "url('/images/background.png')",
     },
     fontFamily: {
-      serif: ['Merriweather', 'serif'],
-      notoserif: ['"Noto Serif Display"', 'serif'],
+      // serif: ['Merriweather', 'serif'],
+       serif: ['Spectral+SC', 'serif'],
+      // notoserif: ['"Noto Serif Display"', 'serif'],
+
     },
   },
   darkMode: "class",
