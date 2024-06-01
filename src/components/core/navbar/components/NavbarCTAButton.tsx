@@ -17,8 +17,8 @@ export const NavbarCTAButton = () => {
             }
         },
         hover: {
-            transition: { duration: 0.1 }, // smoother transition
-            backgroundColor: "#ec4899",
+            transition: { duration: 0.3 }, // smoother transition
+            backgroundColor: "#db2777",
             color: "#ffffff",
         }
     };

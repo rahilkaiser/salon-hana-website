@@ -39,7 +39,7 @@ export const TreatmentSection: React.FC = () => {
                     title="Wimpern & Brauen"
                 />
             </div>
-            <div className="pt-12 mx-auto">
+            <div className="pt-10 mx-auto">
                 <CustomButton text="Alle Dienstleistungen" clicked={handleButtonClick} />
             </div>
         </div>
