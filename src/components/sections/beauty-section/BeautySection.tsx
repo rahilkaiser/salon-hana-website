@@ -2,6 +2,7 @@
 
 import React from "react";
 import {Modal, ModalContent, ModalBody, useDisclosure} from "@nextui-org/react";
+import Image from "next/image";
 
 export const BeautySection = () => {
     const {isOpen, onOpen, onClose} = useDisclosure();
@@ -11,7 +12,7 @@ export const BeautySection = () => {
     };
 
     return (
-        <div className="w-full py-8 text-start bg-accent sm:py-16">
+        <div className="w-full py-8 text-start bg-accent sm:py-16 ">
             <div className="max-w-7xl mx-auto px-4 sm:px-8">
                 <div
                     className="flex flex-col-reverse lg:flex-row items-stretch justify-between space-y-8 lg:space-y-0 lg:space-x-8">
@@ -39,10 +40,11 @@ export const BeautySection = () => {
                     </div>
                     <div className="flex-1 relative p-4 overflow-hidden flex items-center justify-center">
                         <div className="absolute inset-0">
-                            <img
+                            <Image
                                 src="https://mlvj6gh278jg.i.optimole.com/cb:-M3q.40215/w:auto/h:auto/q:90/f:best/https://www.beautycarezuerich.ch/wp-content/uploads/2022/07/22.jpg"
                                 alt="Video background"
                                 className="w-full h-full object-cover"
+                                fill
                             />
                             <button
 
@@ -75,7 +77,6 @@ export const BeautySection = () => {
                                 // src="https://www.youtube.com/embed/c8OBF4kZg7c"
                                 src="https://www.youtube.com/embed/NpEaa2P7qZI"
                                 // src="https://www.youtube.com/watch?v=NpEaa2P7qZI"
-                                frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
                             ></iframe>
