@@ -6,18 +6,6 @@ type SmoothScrollContainerProps = {
     children?: React.ReactNode;
 };
 
-class SmoothTouchScrollPlugin extends ScrollbarPlugin {
-    static pluginName = 'smoothTouchScroll';
-
-    transformDelta(delta: any, fromEvent: { type: string; }) {
-        if (fromEvent.type === 'touchmove') {
-            this.scrollbar.options.damping = 0.1; // change this to whatever you want
-        }
-
-        return delta;
-    }
-}
-
 const SmoothScrollContainer: React.FC<SmoothScrollContainerProps> = ({ children }) => {
     const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -28,10 +16,9 @@ const SmoothScrollContainer: React.FC<SmoothScrollContainerProps> = ({ children 
 
             scrollbarInstance = Scrollbar.init(scrollRef.current, {
                 damping: isMobile ? 0.01 : 0.05,
-                thumbMinSize: 10,
+                thumbMinSize: 20,
                 alwaysShowTracks: true,
-                continuousScrolling: true,
-                plugins: SmoothTouchScrollPlugin
+                continuousScrolling: !isMobile,
             });
         }
 
