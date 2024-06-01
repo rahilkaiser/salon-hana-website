@@ -31,7 +31,6 @@ const SmoothScrollContainer: React.FC<SmoothScrollContainerProps> = ({ children 
                 thumbMinSize: 10,
                 alwaysShowTracks: true,
                 continuousScrolling: true,
-                renderByPixels: false,
                 plugins: SmoothTouchScrollPlugin
             });
         }
