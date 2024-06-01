@@ -10,7 +10,7 @@ import SmoothScrollContainer from "@/components/core/smooth-scrollbar-container/
 export default function Home() {
     return (
         <NextUIProvider>
-            <main>
+            <main className="font-serif">
                 <StickyNavbar/>
                 <SmoothScrollContainer>
                     <section><Hero/></section>

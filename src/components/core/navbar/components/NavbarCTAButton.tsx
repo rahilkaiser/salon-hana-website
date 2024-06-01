@@ -13,7 +13,7 @@ export const NavbarCTAButton = () => {
             opacity: 1,
             transition: {
                 delay: 0.6, // Adjusted to follow after the last text
-                duration: 0.4,
+                duration: 0.3,
             }
         },
         hover: {
