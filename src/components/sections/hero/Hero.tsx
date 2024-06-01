@@ -7,7 +7,7 @@ export const Hero: React.FC = () => {
         <section className="relative h-screen flex items-center justify-center">
             <div className="absolute inset-0 overflow-hidden rounded-lg">
                 <Image
-                    src="/images/background.png"
+                    src="/images/flipped-bg.jpg"
                     alt="Beauty Salon"
                     layout="fill"  // Use 'fill' to make the image cover the designated area
                     objectFit="cover"  // Ensures the image covers the div completely

@@ -18,7 +18,7 @@ export const HeroText = () => {
     };
 
     return (
-        <div className="relative z-10 text-center text-white px-6 md:px-12 lg:px-24">
+        <div className="relative z-10 text-center md:text-start w-full text-white pt-40 px-6 md:px-12 lg:px-24">
             <motion.h1
                 initial="hidden"
                 animate="visible"
@@ -40,7 +40,7 @@ export const HeroText = () => {
                 animate="visible"
                 custom={2} // Further delay for the third element
                 variants={textVariants}
-                className="text-xl md:text-2xl max-w-3xl mx-auto mb-12 font-serif">
+                className="text-xl md:text-2xl max-w-3xl mb-12 font-serif">
                 Entdecken Sie bei Salon Hana in Berlin ein umfangreiches Angebot an Beauty-Dienstleistungen – von
                 Sugaring und Waxing bis hin zu dauerhafter Haarentfernung und Wimpernlifting.
             </motion.h4>
