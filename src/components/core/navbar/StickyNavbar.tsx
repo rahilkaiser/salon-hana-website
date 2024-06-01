@@ -15,6 +15,7 @@ import MainMenu from "@/components/core/menu/MainMenu";
 import { motion } from "framer-motion";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendar} from "@fortawesome/free-solid-svg-icons";
+import SmoothScrollContainer from "@/components/core/smooth-scrollbar-container/SmoothScrollContainer";
 
 export const StickyNavbar = () => {
     let isMenuOpen = React.useState(false);
@@ -50,8 +51,6 @@ export const StickyNavbar = () => {
 
     return (
         <Navbar isBordered maxWidth="full" className="" isBlurred={true}>
-
-
             <NavbarContent className="sm:flex gap-4" justify="start">
                 <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"}/>
                 <NavbarItem>
@@ -73,7 +72,6 @@ export const StickyNavbar = () => {
                 </NavbarBrand>
             </NavbarContent>
 
-
             <NavbarContent justify="end">
                 <NavbarItem>
                     <motion.button
@@ -89,12 +87,11 @@ export const StickyNavbar = () => {
                 </NavbarItem>
             </NavbarContent>
 
-
             <NavbarMenu
                 className="text-black pt-20 overflow-x-hidden overflow-y-auto">
-                <NavbarMenuItem>
+                <SmoothScrollContainer><NavbarMenuItem>
                     <MainMenu></MainMenu>
-                </NavbarMenuItem>
+                </NavbarMenuItem></SmoothScrollContainer>
             </NavbarMenu>
         </Navbar>
     );

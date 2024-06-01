@@ -49,7 +49,7 @@ const MainMenu: React.FC = () => {
 
     return (
         <div className="flex justify-center items-center">
-            <div className="flex w-full mx-[30%] h-80 p-4">
+            <div className="flex w-full mx-[30%]  p-4">
                 <ul className="flex flex-col justify-start items-start mx-auto text-center">
                     {Object.keys(menus).map((menu) => (
                         <li className="px-6 py-2"
@@ -61,7 +61,7 @@ const MainMenu: React.FC = () => {
                         </li>
                     ))}
                 </ul>
-                <div className="w-96 h-screen p-5 overflow-y-auto">
+                <div className="w-96 p-5 overflow-y-auto">
                     {selectedMenu && (
                         <ul className="flex flex-col justify-start items-start mx-auto text-center">
                             {menus[selectedMenu].map((submenuItem, index) => (
