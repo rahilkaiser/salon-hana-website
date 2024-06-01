@@ -15,7 +15,7 @@ const SmoothScrollContainer: React.FC<SmoothScrollContainerProps> = ({ children 
             const isMobile = window.innerWidth < 768;
 
             scrollbarInstance = Scrollbar.init(scrollRef.current, {
-                damping: isMobile ? 0 : 0.05, // Adjust damping based on device type
+                damping: isMobile ? 0.01 : 0.05,
                 thumbMinSize: 20,
                 alwaysShowTracks: true,
                 continuousScrolling: true,
