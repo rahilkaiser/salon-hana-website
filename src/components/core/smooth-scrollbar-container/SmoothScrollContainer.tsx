@@ -1,10 +1,22 @@
 'use client'
 import React, { useRef, useEffect } from 'react';
-import Scrollbar from 'smooth-scrollbar';
+import Scrollbar, {ScrollbarPlugin} from 'smooth-scrollbar';
 
 type SmoothScrollContainerProps = {
     children?: React.ReactNode;
 };
+
+class SmoothTouchScrollPlugin extends ScrollbarPlugin {
+    static pluginName = 'smoothTouchScroll';
+
+    transformDelta(delta: any, fromEvent: { type: string; }) {
+        if (fromEvent.type === 'touchmove') {
+            this.scrollbar.options.damping = 0.1; // change this to whatever you want
+        }
+
+        return delta;
+    }
+}
 
 const SmoothScrollContainer: React.FC<SmoothScrollContainerProps> = ({ children }) => {
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -19,7 +31,8 @@ const SmoothScrollContainer: React.FC<SmoothScrollContainerProps> = ({ children 
                 thumbMinSize: 10,
                 alwaysShowTracks: true,
                 continuousScrolling: true,
-                renderByPixels: false
+                renderByPixels: false,
+                plugins: SmoothTouchScrollPlugin
             });
         }
 
