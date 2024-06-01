@@ -1,3 +1,4 @@
+"use client"
 import {
     Navbar,
     NavbarBrand,
@@ -7,7 +8,7 @@ import {
     NavbarMenuItem,
 } from "@nextui-org/react";
 import MainMenu from "@/components/core/menu/MainMenu";
-import { motion } from "framer-motion";
+import {motion} from "framer-motion";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendar} from "@fortawesome/free-solid-svg-icons";
 import SmoothScrollContainer from "@/components/core/smooth-scrollbar-container/SmoothScrollContainer";
@@ -29,15 +30,15 @@ export const StickyNavbar = () => {
     ];
 
 
-
     return (
-        <Navbar isBordered maxWidth="full" className="" isBlurred={true}>
-            <NavbarContent className="sm:flex gap-4" justify="start">
+        <Navbar isBordered maxWidth="full" className="overflow-hidden pointer-events-none overscroll-none mx-auto" isBlurred={true}>
+            <NavbarContent justify="start">
                 <MenuToggleComponent/>
             </NavbarContent>
 
-            <NavbarContent className="gap-4" justify="center">
-                <NavbarBrand className="cursor-pointer" style={{width: "100%", display: "flex", justifyContent: "center"}}>
+            <NavbarContent className="" justify="center">
+                <NavbarBrand className="cursor-pointer"
+                             style={{width: "100%", display: "flex", justifyContent: "center"}}>
                     <svg width="200" height="100" xmlns="http://www.w3.org/2000/svg" style={{margin: "auto"}}>
                         <text x="50%" y="40%" dominantBaseline="middle" textAnchor="middle" fontFamily="Noto Serif"
                               fontSize="25" fill="black" fontWeight="500">Salon Hana
