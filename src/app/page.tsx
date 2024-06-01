@@ -11,11 +11,10 @@ export default function Home() {
     return (
         <NextUIProvider>
 
-            <header><StickyNavbar/></header>
+
             <main className="font-serif">
-
+                <header><StickyNavbar/></header>
                 <SmoothScrollContainer>
-
                     <section><Hero/></section>
                     <section><Intro/></section>
                     <section><BeautySection/></section>
