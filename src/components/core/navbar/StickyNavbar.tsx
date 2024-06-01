@@ -1,4 +1,4 @@
-"use client"
+
 import {
     Navbar,
     NavbarBrand,
@@ -31,15 +31,14 @@ export const StickyNavbar = () => {
 
 
     return (
-        <Navbar isBordered maxWidth="full" className="overflow-hidden pointer-events-none overscroll-none mx-auto" isBlurred={true}>
+        <Navbar isBordered maxWidth="full" className="overflow-hidden overscroll-none mx-auto" isBlurred={true}>
             <NavbarContent justify="start">
                 <MenuToggleComponent/>
             </NavbarContent>
 
             <NavbarContent className="" justify="center">
-                <NavbarBrand className="cursor-pointer"
-                             style={{width: "100%", display: "flex", justifyContent: "center"}}>
-                    <svg width="200" height="100" xmlns="http://www.w3.org/2000/svg" style={{margin: "auto"}}>
+                <NavbarBrand className="cursor-pointer flex justify-center w-full">
+                    <svg width="200" height="100" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style={{ maxWidth: '100%', height: 'auto', margin: "auto" }}>
                         <text x="50%" y="40%" dominantBaseline="middle" textAnchor="middle" fontFamily="Noto Serif"
                               fontSize="25" fill="black" fontWeight="500">Salon Hana
                         </text>
@@ -49,6 +48,8 @@ export const StickyNavbar = () => {
                         </text>
                     </svg>
                 </NavbarBrand>
+
+
             </NavbarContent>
 
             <NavbarContent justify="end">
