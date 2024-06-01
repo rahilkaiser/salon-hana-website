@@ -4,8 +4,8 @@ import {HeroText} from "@/components/sections/hero/components/HeroText";
 
 export const Hero: React.FC = () => {
     return (
-        <section className="relative h-screen flex items-center justify-center">
-            <div className="absolute inset-0 overflow-hidden rounded-lg">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 rounded-lg">
                 <Image
                     src="/images/flipped-bg.jpg"
                     alt="Beauty Salon"

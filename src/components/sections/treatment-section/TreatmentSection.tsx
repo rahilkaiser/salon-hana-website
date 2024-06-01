@@ -23,12 +23,12 @@ export const TreatmentSection: React.FC = () => {
                     title="Microneedling"
                 />
                 <ImageCard
-                    imageUrl="https://mlvj6gh278jg.i.optimole.com/cb:-M3q.40215/w:726/h:522/q:90/f:best/https://www.beautycarezuerich.ch/wp-content/uploads/2022/07/hydrafacial.jpg"
+                    imageUrl="/images/waxingface.jpg"
                     title="Waxing Gesicht"
                 />
                 <ImageCard
-                    imageUrl="https://mlvj6gh278jg.i.optimole.com/cb:-M3q.40215/w:726/h:522/q:90/f:best/https://www.beautycarezuerich.ch/wp-content/uploads/2022/07/permanent-make-up.jpg"
-                    title="Permanent Make-up"
+                    imageUrl="/images/hairrem.jpg"
+                    title="Dauerhafte Haarentfernung"
                 />
                 <ImageCard
                     imageUrl="/images/sugaring.jpg"
