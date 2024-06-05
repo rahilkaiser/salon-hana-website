@@ -6,7 +6,9 @@ import {BeautySection} from "@/components/sections/beauty-section/BeautySection"
 import {TreatmentSection} from "@/components/sections/treatment-section/TreatmentSection";
 import {BeautyPackages} from "@/components/sections/beauty-packages/BeautyPackages";
 import SmoothScrollContainer from "@/components/core/smooth-scrollbar-container/SmoothScrollContainer";
-import {Testemonials} from "@/components/sections/testemonials/Testemonials";
+import {Testimonials} from "@/components/sections/testemonials/Testimonials";
+
+
 
 export default function Home() {
     return (
@@ -23,7 +25,7 @@ export default function Home() {
                     <section><BeautySection/></section>
                     <section><TreatmentSection/></section>
                     <section><BeautyPackages/></section>
-                    <section><Testemonials/></section>
+                    <section><Testimonials/></section>
                 </SmoothScrollContainer>
 
 
