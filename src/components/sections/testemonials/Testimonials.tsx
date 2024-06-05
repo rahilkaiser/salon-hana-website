@@ -9,6 +9,8 @@ import Image from "next/image";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {Navigation} from "swiper/modules";
+import CustomButton from "@/components/core/custom-button/CustomButton";
+import React from "react";
 
 export const Testimonials = () => {
 
@@ -58,15 +60,20 @@ export const Testimonials = () => {
                 </Swiper>
                 <div className="flex justify-center items-center pt-4">
                     <button
-                            className="swiper-button-prev-unique text-primary mx-14">
-                        <FontAwesomeIcon icon={faArrowLeft} size="2x" />
+                        className="swiper-button-prev-unique text-primary mx-14">
+                        <FontAwesomeIcon icon={faArrowLeft} size="2x"/>
                     </button>
                     <button
-                            className="swiper-button-next-unique text-primary mx-14">
-                        <FontAwesomeIcon icon={faArrowRight} size="2x" />
+                        className="swiper-button-next-unique text-primary mx-14">
+                        <FontAwesomeIcon icon={faArrowRight} size="2x"/>
                     </button>
                 </div>
             </div>
+            <div className="py-12 mx-auto">
+                <CustomButton text={"Alle Bewertungen"} clicked={() => {
+                }}></CustomButton>
+            </div>
+
         </div>
     );
 };
