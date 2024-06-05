@@ -7,7 +7,8 @@ import {TreatmentSection} from "@/components/sections/treatment-section/Treatmen
 import {BeautyPackages} from "@/components/sections/beauty-packages/BeautyPackages";
 import SmoothScrollContainer from "@/components/core/smooth-scrollbar-container/SmoothScrollContainer";
 import {Testimonials} from "@/components/sections/testemonials/Testimonials";
-
+import {TreatmentEndingSection} from "@/components/sections/treatment-ending-section/TreatmentEndingSection";
+import {Footer} from "@/components/sections/footer/Footer";
 
 
 export default function Home() {
@@ -26,8 +27,9 @@ export default function Home() {
                     <section><TreatmentSection/></section>
                     <section><BeautyPackages/></section>
                     <section><Testimonials/></section>
+                    <section><TreatmentEndingSection/></section>
+                    <section><Footer/></section>
                 </SmoothScrollContainer>
-
 
 
                 {/*<Impressionen/>*/}
