@@ -33,12 +33,12 @@ export const StickyNavbar = () => {
     return (
         <Navbar isBordered maxWidth="full" className="overflow-hidden overscroll-none mx-auto" isBlurred={true}>
             <NavbarContent justify="start" className="justify-between flex">
-                {/*<MenuToggleComponent/>*/}
-                <button className="font-bold text-primary">Über uns</button>
-                <button className="font-bold text-primary">Leistungen</button>
-                <button className="font-bold text-primary">Beauty Pakete</button>
-                <button className="font-bold text-primary">Rezensionen</button>
-                <button className="font-bold text-primary">Kontakt</button>
+                <MenuToggleComponent/>
+                {/*<button className="font-bold text-primary">Über uns</button>*/}
+                {/*<button className="font-bold text-primary">Leistungen</button>*/}
+                {/*<button className="font-bold text-primary">Beauty Pakete</button>*/}
+                {/*<button className="font-bold text-primary">Rezensionen</button>*/}
+                {/*<button className="font-bold text-primary">Kontakt</button>*/}
             </NavbarContent>
 
             <NavbarContent className="" justify="center">
