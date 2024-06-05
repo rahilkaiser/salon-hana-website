@@ -6,6 +6,7 @@ import {BeautySection} from "@/components/sections/beauty-section/BeautySection"
 import {TreatmentSection} from "@/components/sections/treatment-section/TreatmentSection";
 import {BeautyPackages} from "@/components/sections/beauty-packages/BeautyPackages";
 import SmoothScrollContainer from "@/components/core/smooth-scrollbar-container/SmoothScrollContainer";
+import {Testemonials} from "@/components/sections/testemonials/Testemonials";
 
 export default function Home() {
     return (
@@ -14,16 +15,19 @@ export default function Home() {
 
             <main className="font-serif">
                 <header><StickyNavbar/></header>
+
+
                 <SmoothScrollContainer>
                     <section><Hero/></section>
                     <section><Intro/></section>
                     <section><BeautySection/></section>
                     <section><TreatmentSection/></section>
                     <section><BeautyPackages/></section>
+                    <section><Testemonials/></section>
                 </SmoothScrollContainer>
 
 
-                {/*<Kundenmeinungen/>*/}
+
                 {/*<Impressionen/>*/}
                 {/*<Produkte/>*/}
                 {/*<Aktuelles (Blog)/>*/}
