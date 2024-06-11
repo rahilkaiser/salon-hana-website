@@ -38,7 +38,7 @@ export const Testimonials = () => {
                                height={220}
                                className="mx-auto rounded-full shadow-lg"
                         />
-                        <blockquote className="text-lg font-semibold italic">{"\" This service has truly exceeded my expectations. Fantastic! \""}
+                        <blockquote className="text-lg font-semibold italic">This service has truly exceeded my expectations. Fantastic!
                         </blockquote>
                         <div className="font-medium">John Doe - CEO of BeautyWorks</div>
                     </SwiperSlide>
@@ -50,7 +50,7 @@ export const Testimonials = () => {
                                height={220}
                                className="mx-auto rounded-full shadow-lg"
                         />
-                        <blockquote className="text-lg font-semibold italic">{"\"This service has truly exceeded my expectations. Fantastic! \""}
+                        <blockquote className="text-lg font-semibold italic">This service has truly exceeded my expectations. Fantastic!
                         </blockquote>
                         <div className="font-medium">John Doe - CEO of BeautyWorks</div>
                     </SwiperSlide>
