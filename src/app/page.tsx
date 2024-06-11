@@ -28,6 +28,7 @@ export default function Home() {
                     <section><BeautyPackages/></section>
                     <section><Testimonials/></section>
                     <section><TreatmentEndingSection/></section>
+                    <section><Testimonials/></section>
                     <section><Footer/></section>
                 </SmoothScrollContainer>
 
