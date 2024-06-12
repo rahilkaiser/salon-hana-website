@@ -64,7 +64,7 @@ export const Footer = () => {
 
             <div className="text-primary flex items-center ">
                 <button
-                    className="text-primary cursor-pointer hover:scale-110 transform transition-transform duration-300 inline-flex items-center origin-center px-4 py-2 bg-gray-200 rounded">
+                    className="mb-20 text-primary cursor-pointer hover:scale-110 transform transition-transform duration-300 inline-flex items-center origin-center px-4 py-2 bg-gray-200 rounded">
                     <FontAwesomeIcon icon={faArrowRight} size="1x" className="text-lg"/>
                     <span className="text-sm ml-2">Nachricht schreiben</span>
                 </button>
