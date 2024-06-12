@@ -9,6 +9,7 @@ import SmoothScrollContainer from "@/components/core/smooth-scrollbar-container/
 import {Testimonials} from "@/components/sections/testemonials/Testimonials";
 import {TreatmentEndingSection} from "@/components/sections/treatment-ending-section/TreatmentEndingSection";
 import {Footer} from "@/components/sections/footer/Footer";
+import Section from "@/components/core/section-component/SectionComponent";
 
 
 export default function Home() {
@@ -20,16 +21,14 @@ export default function Home() {
                 <header className="sticky top-0 z-50"><StickyNavbar/></header>
 
                 <SmoothScrollContainer>
-
-                    <section><Hero/></section>
-                    <section><Intro/></section>
-                    <section><BeautySection/></section>
-                    <section><TreatmentSection/></section>
-                    <section><BeautyPackages/></section>
-                    <section><Testimonials/></section>
-                    <section><TreatmentEndingSection/></section>
-                    {/*<section><Testimonials/></section>*/}
-                    <section><Footer/></section>
+                    <Section noSlide><Hero/></Section>
+                    <Section><Intro/></Section>
+                    <Section noSlide><BeautySection/></Section>
+                    <Section><TreatmentSection/></Section>
+                    <Section><BeautyPackages/></Section>
+                    <Section><Testimonials/></Section>
+                    <Section noSlide><TreatmentEndingSection/></Section>
+                    <Section noSlide><Footer/></Section>
                 </SmoothScrollContainer>
 
 
