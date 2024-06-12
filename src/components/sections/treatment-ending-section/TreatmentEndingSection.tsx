@@ -86,7 +86,7 @@ export const TreatmentEndingSection = () => {
             style={{ backgroundImage: `url(https://www.beautycarezuerich.ch/wp-content/uploads/2022/10/facial-gross.jpg)` }}
         >
             <div className="flex-col h-full w-1/2 mx-auto flex items-center justify-center">
-                <h1 className="text-white text-4xl uppercase text-center my-16">
+                <h1 className="text-white text-lg md:text-4xl uppercase text-center my-16">
                     Genießen Sie Ihre exklusive <span>Gesichtsbehandlung</span>
                 </h1>
                 <button
