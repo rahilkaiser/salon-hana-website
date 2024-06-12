@@ -6,38 +6,12 @@ const MainMenu: React.FC = () => {
     const [menuKey, setMenuKey] = useState<number>(0);
 
     const menus: { [key: string]: string[] } = {
-        "Institut": ['Ihr Termin bei uns', 'Unser Team', 'Kundenbewertungen', 'Philosophie', 'Impressionen', 'Gutscheine', 'Kontakt'],
-        "Gesicht": [
-            'Hautzustände',
-            'Klassische Gesichtsbehandlung',
-            'Facials für den Mann',
-        'HydraFacial',
-        'Microneedling',
-        'Microdermabrasion',
-        'Reviderm PCA Peeling',
-        'Peeling Velours',
-        'LDM Ultraschallbehandlung',
-        'Endermologie Gesicht',
-        'Dauerhafte Haarentfernung Gesicht',
-        ],
-        "Körper": ['LPG® Endermologie (Anti-Cellulite)',
-            'Dauerhafte Haarentfernung mit IPL',
-            'Haarentfernung / Sugaring',
-            'Manicure & Pedicure',
-            'Spraytanning'
-        ],
-        "Make-up": [
-            'Permanent Make-up',
-            'Wimpern & Brauen',
-        ],
-        "Produkte": [
-            'REVIDERM',
-            'Susanne Kaufmann',
-            'Valmont',
-            'LPG®',
-            'Yves Saint Laurent',
-            'Onlineshop',
-        ],
+        "Ihr Termin bei uns":[],
+        "Über uns": [],
+        "Dienstleistungen": [],
+        "Beauty Pakete": [],
+        "Kundenmeinungen": [],
+        "Kontakt": [],
     };
 
     const handleMenuHover = (menu: string) => {
@@ -49,7 +23,7 @@ const MainMenu: React.FC = () => {
     };
 
     return (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center z-50">
             <div className="flex w-full mx-[30%]  p-4">
                 <ul className="flex flex-col justify-start items-start mx-auto text-center">
                     {Object.keys(menus).map((menu) => (

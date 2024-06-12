@@ -20,6 +20,7 @@ export default function Home() {
                 <header className="sticky top-0 z-50"><StickyNavbar/></header>
 
                 <SmoothScrollContainer>
+
                     <section><Hero/></section>
                     <section><Intro/></section>
                     <section><BeautySection/></section>

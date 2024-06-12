@@ -8,9 +8,6 @@ import {
     NavbarMenuItem,
 } from "@nextui-org/react";
 import MainMenu from "@/components/core/menu/MainMenu";
-import {motion} from "framer-motion";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCalendar} from "@fortawesome/free-solid-svg-icons";
 import SmoothScrollContainer from "@/components/core/smooth-scrollbar-container/SmoothScrollContainer";
 import {MenuToggleComponent} from "@/components/core/navbar/components/MenuToggleComponent";
 import {NavbarCTAButton} from "@/components/core/navbar/components/NavbarCTAButton";
@@ -64,10 +61,10 @@ export const StickyNavbar = () => {
             </NavbarContent>
 
             <NavbarMenu
-                className="text-black pt-20 overflow-x-hidden overflow-y-auto">
-                <SmoothScrollContainer><NavbarMenuItem>
+                className="text-black pt-20 overflow-x-hidden overflow-y-hidden">
+                <NavbarMenuItem>
                     <MainMenu></MainMenu>
-                </NavbarMenuItem></SmoothScrollContainer>
+                </NavbarMenuItem>
             </NavbarMenu>
         </Navbar>
     );
