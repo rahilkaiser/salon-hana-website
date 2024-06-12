@@ -15,25 +15,24 @@ export const Footer = () => {
     return (
         <div className="mx-auto max-w-screen-lg bg-white flex flex-col justify-center  p-8 space-y-8 mt-4">
             <div className="border-t-3 border-gray-200 "></div>
-            {/*<BreadcrumbsSection></BreadcrumbsSection>*/}
-            <div className="flex-row justify-space-between">
-                <a className="cursor-pointer hover:text-primary font-semibold pr-4 text-sm uppercase">Über uns</a>
-                <a className="cursor-pointer hover:text-primary font-semibold pr-4 text-sm uppercase">Dienstleistungen</a>
-                <a className="cursor-pointer hover:text-primary font-semibold pr-4 text-sm uppercase">Beautypackete</a>
-                <a className="cursor-pointer hover:text-primary font-semibold pr-4 text-sm uppercase">Kontakt</a>
-                <a className="cursor-pointer hover:text-primary font-semibold pr-4 text-sm uppercase">Impressum</a>
-                <a className="cursor-pointer hover:text-primary font-semibold pr-4 text-sm uppercase">Datenschutz</a>
-                <a className="cursor-pointer hover:text-primary font-semibold pr-4 text-sm uppercase">Cookie-Einstellungen</a>
+            <div className="flex flex-col md:flex-row justify-space-between">
+                <div><a className="cursor-pointer hover:text-primary font-semibold pr-4 text-sm uppercase">Über uns</a></div>
+                <div><a className="cursor-pointer hover:text-primary font-semibold pr-4 text-sm uppercase">Dienstleistungen</a></div>
+                <div><a className="cursor-pointer hover:text-primary font-semibold pr-4 text-sm uppercase">Beautypackete</a></div>
+                <div><a className="cursor-pointer hover:text-primary font-semibold pr-4 text-sm uppercase">Kontakt</a></div>
+                <div><a className="cursor-pointer hover:text-primary font-semibold pr-4 text-sm uppercase">Impressum</a></div>
+                <div><a className="cursor-pointer hover:text-primary font-semibold pr-4 text-sm uppercase">Datenschutz</a></div>
+                <div><a className="cursor-pointer hover:text-primary font-semibold pr-4 text-sm uppercase">Cookie-Einstellungen</a></div>
             </div>
             <div></div>
-            <div className="flex flex-row items-start justify-between w-full">
-                <div className="flex flex-col">
+            <div className="flex flex-col md:flex-row items-start justify-between w-full">
+                <div className="flex flex-col md:py-0 py-1">
                     <div className="font-semibold">Salon Hana</div>
                     <div className="py-0.5">Jungstraße 10</div>
                     <div className="py-0.5">10247 Berlin</div>
                     <div className="py-0.5">Tel. 0160 7785184</div>
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col  md:py-0 py-2">
                     <div className="font-semibold">Öffnungszeiten</div>
                     <div className="flex flex-row">
                         <div className="flex flex-col">
@@ -52,7 +51,7 @@ export const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col justify-start">
+                <div className="flex flex-col justify-start  md:py-0 py-2">
                     <div className="text-lg font-serif">
                         Folgen Sie uns
                     </div>
@@ -63,8 +62,12 @@ export const Footer = () => {
                 </div>
             </div>
 
-            <div className="text-primary cursor-pointer">
-                <FontAwesomeIcon icon={faArrowRight} size="1x" className="text-lg" /> <span className="text-sm">Nachricht schreiben</span>
+            <div className="text-primary flex items-center ">
+                <button
+                    className="text-primary cursor-pointer hover:scale-110 transform transition-transform duration-300 inline-flex items-center origin-center px-4 py-2 bg-gray-200 rounded">
+                    <FontAwesomeIcon icon={faArrowRight} size="1x" className="text-lg"/>
+                    <span className="text-sm ml-2">Nachricht schreiben</span>
+                </button>
             </div>
         </div>
 
