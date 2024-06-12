@@ -13,10 +13,7 @@ const useIntersectionObserver = (options: IntersectionObserverOptions) => {
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
-            setEntries((prevEntries) => [
-                ...prevEntries,
-                ...entries.filter(entry => entry.isIntersecting),
-            ]);
+            setEntries(entries);
         }, options);
 
         const elements = document.querySelectorAll('.observe');

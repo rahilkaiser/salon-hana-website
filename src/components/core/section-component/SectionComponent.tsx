@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, ReactNode } from 'react';
-import useIntersectionObserver from '../interaction-observer/InteractionObserver'
+import useIntersectionObserver from '../interaction-observer/InteractionObserver';
 
 interface SectionProps {
     children: ReactNode;
@@ -13,7 +13,7 @@ const Section: React.FC<SectionProps> = ({ children, noSlide = false }) => {
 
     useEffect(() => {
         entries.forEach((entry) => {
-            if (entry.isIntersecting) {
+            if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
                 entry.target.classList.add('visible');
             }
         });

@@ -1,14 +1,8 @@
-"use client"
 import SectionTitle from "@/components/core/section-title/SectionTitle";
-import CustomButton from "@/components/core/custom-button/CustomButton";
 import React from "react";
 import ServiceCard from "@/components/core/service-card/ServiceCard";
 
 export const BeautyPackages = () => {
-
-    const handleButtonClick = () => {
-        console.log("WORKS")
-    }
 
     const services = [
         {
@@ -61,8 +55,10 @@ export const BeautyPackages = () => {
                     <ServiceCard service={services[2]}/>
                 </div>
                 <div className="py-12 mx-auto">
-                    <CustomButton text="Alle Beauty Pakete" clicked={handleButtonClick}/>
-                </div>
+                    <a href="/"
+                      className="bg-white inline-block px-8 py-3 border-black border text-sm rounded hover:bg-primary hover:border-primary hover:text-white transition duration-300 capitalize font-bold">
+                    Alle Beauty Pakete
+                </a></div>
             </div>
 
         </div>
