@@ -19,7 +19,7 @@ interface ServiceCardProps {
 const ServiceCard: React.FC<ServiceCardProps> = ({service}) => {
     return (
         <div
-            className="relative flex-1 overflow-hidden rounded-lg shadow-lg transition duration-500 ease-in-out transform hover:scale-102"
+            className="mx-auto max-w-72 relative flex-1 overflow-hidden rounded-lg shadow-lg transition duration-500 ease-in-out transform hover:scale-102"
             style={{width: '100%', height: '400px', position: 'relative'}}>
             <Image
                 src={service.imageUrl}

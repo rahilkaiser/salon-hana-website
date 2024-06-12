@@ -10,6 +10,7 @@ import {Testimonials} from "@/components/sections/testemonials/Testimonials";
 import {TreatmentEndingSection} from "@/components/sections/treatment-ending-section/TreatmentEndingSection";
 import {Footer} from "@/components/sections/footer/Footer";
 import Section from "@/components/core/section-component/SectionComponent";
+import {FavServices} from "@/components/sections/fav-services/FavServices";
 
 
 export default function Home() {
@@ -25,6 +26,8 @@ export default function Home() {
                     <Section><Intro/></Section>
                     <Section noSlide><BeautySection/></Section>
                     <Section><TreatmentSection/></Section>
+                    <Section><FavServices/></Section>
+
                     <Section><BeautyPackages/></Section>
                     <Section><Testimonials/></Section>
                     <Section noSlide><TreatmentEndingSection/></Section>
