@@ -31,7 +31,7 @@ export const StickyNavbar = () => {
 
 
     return (
-        <Navbar isBordered maxWidth="full" className="overflow-hidden overscroll-none mx-auto" isBlurred={true}>
+        <Navbar isBordered maxWidth="full" className="overflow-hidden overscroll-none mx-auto" isBlurred={true} >
             <NavbarContent justify="start" className="justify-between flex">
                 <MenuToggleComponent/>
                 {/*<button className="font-bold text-primary">Über uns</button>*/}
