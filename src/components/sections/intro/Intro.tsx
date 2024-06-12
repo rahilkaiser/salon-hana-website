@@ -1,5 +1,4 @@
 import ImageCard from "@/components/core/image-card/ImageCard";
-import CustomButton from "@/components/core/custom-button/CustomButton";
 
 export const Intro = () => {
 

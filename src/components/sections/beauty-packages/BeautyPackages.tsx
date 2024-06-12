@@ -1,6 +1,5 @@
 "use client"
 import SectionTitle from "@/components/core/section-title/SectionTitle";
-import ImageCard from "@/components/core/image-card/ImageCard";
 import CustomButton from "@/components/core/custom-button/CustomButton";
 import React from "react";
 import ServiceCard from "@/components/core/service-card/ServiceCard";

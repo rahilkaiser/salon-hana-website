@@ -4,11 +4,6 @@ import Lenis from "@studio-freight/lenis";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-type TreatmentEndingSectionProps = {
-    imageSrc: string;
-};
-
-
 export const TreatmentEndingSection = () => {
     const ref = useRef<HTMLDivElement>(null);
     const [lenis, setLenis] = useState<Lenis | null>(null);

@@ -9,9 +9,9 @@ export const Hero: React.FC = () => {
                     <Image
                         src="/images/flipped-bg.jpg"
                         alt="Beauty Salon"
-                        layout="fill"  // Use 'fill' to make the image cover the designated area
-                        objectFit="cover"  // Ensures the image covers the div completely
-                        priority={true}  // Ensures the image is preloaded on the server
+                        layout="fill"
+                        objectFit="cover"
+                        priority={true}
                     />
 
             </div>

@@ -20,27 +20,15 @@ export const TreatmentSection: React.FC = () => {
                 />
                 <ImageCard
                     imageUrl="https://mlvj6gh278jg.i.optimole.com/cb:-M3q.40215/w:726/h:522/q:90/f:best/https://www.beautycarezuerich.ch/wp-content/uploads/2022/07/microneedling.jpg"
-                    title="Microneedling"
+                    title="Haarentfernung"
                 />
                 <ImageCard
                     imageUrl="/images/waxingface.jpg"
-                    title="Waxing Gesicht"
-                />
-                <ImageCard
-                    imageUrl="/images/hairrem.jpg"
-                    title="Dauerhafte Haarentfernung"
-                />
-                <ImageCard
-                    imageUrl="/images/sugaring.jpg"
-                    title="Sugaring"
-                />
-                <ImageCard
-                    imageUrl="https://mlvj6gh278jg.i.optimole.com/cb:-M3q.40215/w:726/h:522/q:90/f:best/https://www.beautycarezuerich.ch/wp-content/uploads/2023/10/wimpern-start.jpg"
-                    title="Wimpern & Brauen"
+                    title="Zahnmedizinisch"
                 />
             </div>
             <div className="pt-10 mx-auto">
-                <CustomButton text="Alle Dienstleistungen" clicked={handleButtonClick} />
+                <CustomButton text="Alle Services" clicked={handleButtonClick} />
             </div>
         </div>
     );

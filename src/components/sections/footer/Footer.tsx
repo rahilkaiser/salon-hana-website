@@ -1,12 +1,3 @@
-import {Divider} from "@nextui-org/react";
-import {BreadcrumbsSection} from "@/components/sections/footer/components/BreadcrumbsSection";
-import {Hero} from "@/components/sections/hero/Hero";
-import {Intro} from "@/components/sections/intro/Intro";
-import {BeautySection} from "@/components/sections/beauty-section/BeautySection";
-import {TreatmentSection} from "@/components/sections/treatment-section/TreatmentSection";
-import {BeautyPackages} from "@/components/sections/beauty-packages/BeautyPackages";
-import {Testimonials} from "@/components/sections/testemonials/Testimonials";
-import {TreatmentEndingSection} from "@/components/sections/treatment-ending-section/TreatmentEndingSection";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
@@ -44,7 +35,7 @@ export const Footer = () => {
                         </div>
                         <div className="flex flex-col px-2">
                             <div className="py-0.5">10:00 - 15:00</div>
-                            <div className="py-0.5">10:00 - 15:00</div>
+                            <div className="py-0.5">10:00 - 17:00</div>
                             <div className="py-0.5">10:00 - 15:00</div>
                             <div className="py-0.5">10:00 - 15:00</div>
                             <div className="py-0.5">10:00 - 15:00</div>
@@ -73,14 +64,3 @@ export const Footer = () => {
 
     );
 };
-
-// <section><Hero/></section>
-// <section><Intro/></section>
-// <section><BeautySection/></section>
-// <section><TreatmentSection/></section>
-// <section><BeautyPackages/></section>
-// <section><Testimonials/></section>
-// <section><TreatmentEndingSection/></section>
-// {/*<section><Testimonials/></section>*/
-// }
-// <section><Footer/></section>
