@@ -1,4 +1,4 @@
-
+"use client"
 import {
     Navbar,
     NavbarBrand,
@@ -11,31 +11,26 @@ import MainMenu from "@/components/core/menu/MainMenu";
 import SmoothScrollContainer from "@/components/core/smooth-scrollbar-container/SmoothScrollContainer";
 import {MenuToggleComponent} from "@/components/core/navbar/components/MenuToggleComponent";
 import {NavbarCTAButton} from "@/components/core/navbar/components/NavbarCTAButton";
+import {useState} from "react";
 
 export const StickyNavbar = () => {
 
-    interface MenuItem {
-        id: number;
-        title: string;
-        content: string;
-    }
+    const [isMenuOpen, setMenuOpen] = useState(false);
 
-    const menuItems: MenuItem[] = [
-        {id: 1, title: 'Item 1', content: 'This is the content for Item 1'},
-        {id: 2, title: 'Item 2', content: 'This is the content for Item 2'},
-        {id: 3, title: 'Item 3', content: 'This is the content for Item 3'},
-    ];
+    const toggleMenu = () => {
+        setMenuOpen(!isMenuOpen);
+    };
 
+    const handleMenuClick = () => {
+
+
+        setMenuOpen(false);  // Ensure the menu closes when a menu item is clicked
+    };
 
     return (
-        <Navbar isBordered maxWidth="full" className="overflow-hidden overscroll-none mx-auto" isBlurred={true} >
+        <Navbar isBordered maxWidth="full" className="overflow-hidden overscroll-none mx-auto" isBlurred={true} isMenuOpen={isMenuOpen}>
             <NavbarContent justify="start" className="justify-between flex">
-                <MenuToggleComponent/>
-                {/*<button className="font-bold text-primary">Über uns</button>*/}
-                {/*<button className="font-bold text-primary">Leistungen</button>*/}
-                {/*<button className="font-bold text-primary">Beauty Pakete</button>*/}
-                {/*<button className="font-bold text-primary">Rezensionen</button>*/}
-                {/*<button className="font-bold text-primary">Kontakt</button>*/}
+                <MenuToggleComponent isMenuOpen={isMenuOpen} toggleMenu={toggleMenu}/>
             </NavbarContent>
 
             <NavbarContent className="" justify="center">
@@ -51,7 +46,6 @@ export const StickyNavbar = () => {
                     </svg>
                 </NavbarBrand>
 
-
             </NavbarContent>
 
             <NavbarContent justify="end">
@@ -63,7 +57,7 @@ export const StickyNavbar = () => {
             <NavbarMenu
                 className="text-black pt-20 overflow-x-hidden overflow-y-hidden">
                 <NavbarMenuItem>
-                    <MainMenu></MainMenu>
+                     <MainMenu onMenuItemClick={handleMenuClick} />
                 </NavbarMenuItem>
             </NavbarMenu>
         </Navbar>

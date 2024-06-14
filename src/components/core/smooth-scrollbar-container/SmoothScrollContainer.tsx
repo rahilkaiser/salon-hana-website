@@ -1,6 +1,5 @@
 'use client'
-import React, { useRef, useEffect } from 'react';
-import Scrollbar, {ScrollbarPlugin} from 'smooth-scrollbar';
+import React from 'react';
 import ReactLenis from "@studio-freight/react-lenis";
 
 type SmoothScrollContainerProps = {

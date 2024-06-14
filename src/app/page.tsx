@@ -22,16 +22,16 @@ export default function Home() {
                 <header className="sticky top-0 z-50"><StickyNavbar/></header>
 
                 <SmoothScrollContainer>
-                    <Section noSlide><Hero/></Section>
-                    <Section><Intro/></Section>
-                    <Section noSlide><BeautySection/></Section>
-                    <Section><TreatmentSection/></Section>
-                    <Section noSlide><FavServices/></Section>
+                    <Section id={"hero"} noSlide><Hero/></Section>
+                    <Section id={"intro"}><Intro/></Section>
+                    <Section id={"beauty-section"} noSlide><BeautySection/></Section>
+                    <Section id={"treatment-section"}><TreatmentSection/></Section>
+                    <Section id={"fav-services"} noSlide><FavServices/></Section>
 
-                    <Section noSlide><BeautyPackages/></Section>
-                    <Section><Testimonials/></Section>
-                    <Section noSlide><TreatmentEndingSection/></Section>
-                    <Section noSlide><Footer/></Section>
+                    <Section id={"beauty-packages"} noSlide><BeautyPackages/></Section>
+                    <Section id={"testimonials"}><Testimonials/></Section>
+                    <Section id={"treatment-ending-section"} noSlide><TreatmentEndingSection/></Section>
+                    <Section id={"footer"} noSlide><Footer/></Section>
                 </SmoothScrollContainer>
 
 
