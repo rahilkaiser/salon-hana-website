@@ -26,9 +26,9 @@ export default function Home() {
                     <Section><Intro/></Section>
                     <Section noSlide><BeautySection/></Section>
                     <Section><TreatmentSection/></Section>
-                    <Section><FavServices/></Section>
+                    <Section noSlide><FavServices/></Section>
 
-                    <Section><BeautyPackages/></Section>
+                    <Section noSlide><BeautyPackages/></Section>
                     <Section><Testimonials/></Section>
                     <Section noSlide><TreatmentEndingSection/></Section>
                     <Section noSlide><Footer/></Section>
