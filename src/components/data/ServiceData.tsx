@@ -218,7 +218,7 @@ export const serviceMap: ServiceMap[] = [
                         title: "Gesichtsbehandlung - Microneedling",
                         description: "A quick and effective hair removal service using natural sugar paste.",
                         price: 99 ,
-                        isSelected: true,
+                        isSelected: false,
                         time: "1 Std."
                     },
                     {
@@ -226,14 +226,14 @@ export const serviceMap: ServiceMap[] = [
                         title: "Gesichtsbehandlung - Aquafacial",
                         description: "A quick and effective hair removal service using natural sugar paste.",
                         price: 95 ,
-                        isSelected: true,
+                        isSelected: false,
                         time: "30"
                     },
                     {
                         title: "Gesichtsbehandlung - SkinScrubber",
                         description: "A quick and effective hair removal service using natural sugar paste.",
                         price: 80 ,
-                        isSelected: true,
+                        isSelected: false,
                         time: "45"
                     },
                     {
@@ -318,7 +318,7 @@ export const serviceMap: ServiceMap[] = [
                         title: "Zahnbleaching",
                         description: "A quick and effective hair removal service using natural sugar paste.",
                         price: 125 ,
-                        isSelected: true,
+                        isSelected: false,
                         time: "45"
                     },
                 ]

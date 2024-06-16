@@ -104,7 +104,7 @@ export default function Services() {
                                     className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
                                     <p className="text-white/80 text-center w-full">{category.name}</p>
                                 </CardFooter>
-                                {category.isSelected && (
+                                {(category.isSelected && category.name != 'Alle') && (
                                     <FontAwesomeIcon
                                         icon={faCheckCircle}
                                         className="absolute top-0 right-0 m-2 text-primary text-2xl z-50"
