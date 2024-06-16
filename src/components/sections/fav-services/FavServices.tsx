@@ -1,6 +1,7 @@
 import SectionTitle from "@/components/core/section-title/SectionTitle";
 import React from "react";
 import ServiceCard from "@/components/core/service-card/ServiceCard";
+import Link from "next/link";
 
 export const FavServices = () => {
 
@@ -70,8 +71,6 @@ export const FavServices = () => {
                 </div>
             </div>
             <div>
-
-                {/*grid grid-cols-1 lg:grid-cols-2 gap-8 pt-10 */}
                 <div
                     className="flex flex-col md:flex-row justify-center md:justify-between space-y-8 md:space-y-0 md:space-x-8">
                     <div className="flex-1">
@@ -81,11 +80,11 @@ export const FavServices = () => {
                     <ServiceCard service={services[4]}/>
                     </div>
                 </div>
-                <div className="py-12 mx-auto">
-                    <a  href="/"
+                <div className="py-14 mx-auto">
+                    <Link prefetch href={'/services'}
                         className="bg-white inline-block px-8 py-3 border-black border text-sm rounded hover:bg-primary hover:border-primary hover:text-white transition duration-300 capitalize font-bold">
                         Alle Services
-                    </a>
+                    </Link>
                 </div>
             </div>
 

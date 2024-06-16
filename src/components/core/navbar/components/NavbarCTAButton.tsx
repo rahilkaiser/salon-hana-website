@@ -2,6 +2,7 @@
 import {motion} from "framer-motion";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendar} from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 export const NavbarCTAButton = () => {
 
@@ -24,6 +25,7 @@ export const NavbarCTAButton = () => {
     };
 
     return (
+        <Link href={'/services'}>
         <motion.button
             initial="hidden"
             animate="visible"
@@ -32,7 +34,7 @@ export const NavbarCTAButton = () => {
             className="px-4 py-2 sm:px-8 sm:py-3 bg-primary text-white text-lg rounded capitalize">
             <FontAwesomeIcon icon={faCalendar} className="px-2"/>
             <span className="hidden sm:inline">Termin Buchen</span>
-
         </motion.button>
+        </Link>
     );
 };

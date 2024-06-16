@@ -20,14 +20,17 @@ export const Intro = () => {
             <div
                 className="flex flex-col lg:flex-row justify-between items-center space-y-8 lg:space-y-0 lg:space-x-8 pt-40">
                 <ImageCard
+                    href={'team'}
                     imageUrl="https://mlvj6gh278jg.i.optimole.com/cb:-M3q.40215/w:726/h:522/q:90/f:best/https://www.beautycarezuerich.ch/wp-content/uploads/2022/07/team.jpg"
                     title="Unser Team"
                 />
                 <ImageCard
+                    href={'salon'}
                     imageUrl="https://mlvj6gh278jg.i.optimole.com/cb:-M3q.40215/w:726/h:522/q:90/f:best/https://www.beautycarezuerich.ch/wp-content/uploads/2022/07/kabine.jpg"
                     title="Ambiente"
                 />
                 <ImageCard
+                    href={'services'}
                     imageUrl="https://mlvj6gh278jg.i.optimole.com/cb:-M3q.40215/w:726/h:522/q:90/f:best/https://www.beautycarezuerich.ch/wp-content/uploads/2022/07/behandlungen-1.jpg"
                     title="Dienstleistungen"
                 />

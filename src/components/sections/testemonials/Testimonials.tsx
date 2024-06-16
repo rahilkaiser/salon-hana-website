@@ -68,8 +68,7 @@ export const Testimonials = () => {
                 </div>
             </div>
             <div className="py-12 mx-auto">
-                <CustomButton text={"Alle Bewertungen"} clicked={() => {
-                }}></CustomButton>
+                <CustomButton text={"Alle Bewertungen"} href={'/testimonials'}></CustomButton>
             </div>
 
         </div>

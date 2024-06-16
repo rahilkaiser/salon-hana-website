@@ -1,6 +1,7 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 export const Footer = () => {
     return (
@@ -49,18 +50,18 @@ export const Footer = () => {
                     <div className="py-4">
                         <FontAwesomeIcon className="hover:text-primary cursor-pointer" icon={faInstagram} size="2x" />
                     </div>
-
                 </div>
             </div>
 
             <div className="text-primary flex items-center ">
-                <button
-                    className="mb-20 text-primary cursor-pointer hover:scale-110 transform transition-transform duration-300 inline-flex items-center origin-center px-4 py-2 bg-gray-200 rounded">
-                    <FontAwesomeIcon icon={faArrowRight} size="1x" className="text-lg"/>
-                    <span className="text-sm ml-2">Nachricht schreiben</span>
-                </button>
+                <Link href={'/contact'}>
+                    <button
+                        className="mb-20 text-primary cursor-pointer hover:scale-110 transform transition-transform duration-300 inline-flex items-center origin-center px-4 py-2 bg-gray-200 rounded">
+                        <FontAwesomeIcon icon={faArrowRight} size="1x" className="text-lg"/>
+                        <span className="text-sm ml-2">Nachricht schreiben</span>
+                    </button>
+                </Link>
             </div>
         </div>
-
     );
 };

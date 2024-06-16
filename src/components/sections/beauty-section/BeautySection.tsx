@@ -3,6 +3,7 @@
 import React from "react";
 import {Modal, ModalContent, ModalBody, useDisclosure} from "@nextui-org/react";
 import Image from "next/image";
+import Link from "next/link";
 
 export const BeautySection = () => {
     const {isOpen, onOpen, onClose} = useDisclosure();
@@ -33,10 +34,12 @@ export const BeautySection = () => {
                             Entdecken Sie <strong>Kosmetik auf höchstem Niveau</strong> bei Beauty Care Zürich und
                             lassen Sie sich von Kopf bis Fuss verwöhnen.
                         </p>
-                        <button
-                            className="bg-transparent inline-block px-6 py-2 sm:px-8 sm:py-3 border-black border text-sm rounded hover:bg-primary hover:border-primary hover:text-white transition duration-300 capitalize font-bold">
-                            Mehr über uns
-                        </button>
+                        <Link href={'/about'} prefetch>
+                            <button
+                                className="bg-transparent inline-block px-6 py-2 sm:px-8 sm:py-3 border-black border text-sm rounded hover:bg-primary hover:border-primary hover:text-white transition duration-300 capitalize font-bold">
+                                Mehr über uns
+                            </button>
+                        </Link>
                     </div>
                     <div className="flex-1 relative p-4 overflow-hidden flex items-center justify-center">
                         <div className="absolute inset-0">

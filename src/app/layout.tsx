@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import {NextUIProvider} from "@nextui-org/react";
+import {StickyNavbar} from "@/components/core/navbar/StickyNavbar";
+import SmoothScrollContainer from "@/components/core/smooth-scrollbar-container/SmoothScrollContainer";
+import Section from "@/components/core/section-component/SectionComponent";
+import {Footer} from "@/components/sections/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -56,10 +61,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-
     <html lang="de">
       <body className={inter.className}>
-      {children}
+      <NextUIProvider>
+        <header className="sticky top-0 z-50"><StickyNavbar/></header>
+        <main className="font-serif">
+          <SmoothScrollContainer>
+            {children}
+          </SmoothScrollContainer>
+        </main>
+        <footer>
+          <Section id={"footer"} noSlide><Footer/></Section>
+        </footer>
+      </NextUIProvider>
       </body>
     </html>
   );
