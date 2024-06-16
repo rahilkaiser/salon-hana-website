@@ -375,7 +375,7 @@ export default function Services() {
         <div className="w-full py-8 text-start bg-accent sm:py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-8">
                 <h1>ALLE SERVICES</h1>
-                <div className="bg-accent p-4 flex flex-row space-x-2">
+                <div className="bg-accent p-4 flex md:flex-row flex-col md:space-x-2 md:space-y-0 space-y-2 items-center">
                     {services.map(service => (
                         <motion.div
                             key={service.name}
@@ -407,8 +407,8 @@ export default function Services() {
                 <div className="py-16">
 
 
-                    <div className="flex">
-                        <div className="w-1/4">
+                    <div className="flex flex-col md:flex-row ">
+                        <div className="md:w-1/4">
                             {sidebarContents[selected]?.map((item, index) => (
                                 <motion.div key={index}
                                             className="p-2 cursor-pointer"
@@ -420,24 +420,19 @@ export default function Services() {
                                 </motion.div>
                             ))}
                         </div>
-                        <div className="w-3/4 px-4">
-
+                        <div className="md:w-3/4 px-4 py-4 md:py-0">
                             {detailedServices[selectedItem]?.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-white p-4 my-2 rounded-lg shadow-md"
-                                >
+                                <div key={index}
+                                    className="bg-white p-4 my-2 rounded-lg shadow-md">
                                     {!item.group ?
                                         <div className="flex flex-row space-x-2 justify-between items-center">
-                                            <div
-                                            >
+                                            <div>
                                                 <h3 className="text-xl font-bold text-gray-800">{item.title}</h3>
                                                 <div className={'flex flex-row space-x-2'}>
                                                     <p className="text-gray-600">{item.time} Min.</p>
                                                     <p className="text-gray-800 font-semibold cursor-pointer">Details
                                                         anzeigen</p>
                                                 </div>
-
                                             </div>
                                             <div className="flex flex-row space-x-2 items-center">
                                                 <p className="text-gray-800 font-semibold">{item.price} €</p>
