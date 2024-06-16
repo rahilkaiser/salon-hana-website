@@ -1,5 +1,6 @@
 import Lenis from "@studio-freight/lenis";
 import {useLenis} from "@studio-freight/react-lenis";
+import Link from "next/link";
 
 
 const MainMenu: React.FC<{ onMenuItemClick: () => void }> = ({ onMenuItemClick }) => {
@@ -28,25 +29,25 @@ const MainMenu: React.FC<{ onMenuItemClick: () => void }> = ({ onMenuItemClick }
                             Ihr Termin bei uns
                         </a>
                     </li>
-                    <li className="px-6 py-2" onClick={() => handleScrollTo(lenis, 'beauty-section')}>
-                        <a className={`text-black text-2xl cursor-pointer font-serif hover:text-primary`}>
+                    <li className="px-6 py-2" onClick={() => onMenuItemClick()}>
+                        <Link href={'/about'} className={`text-black text-2xl cursor-pointer font-serif hover:text-primary`}>
                             Über uns
-                        </a>
+                        </Link>
                     </li>
-                    <li className="px-6 py-2" onClick={() => handleScrollTo(lenis, 'treatment-section')}>
-                        <a className={`text-black text-2xl cursor-pointer font-serif hover:text-primary`}>
+                    <li className="px-6 py-2" onClick={() => onMenuItemClick()}>
+                        <Link href={'/services'} className={`text-black text-2xl cursor-pointer font-serif hover:text-primary`}>
                             Dienstleistungen
-                        </a>
+                        </Link>
                     </li>
                     <li className="px-6 py-2" onClick={() => handleScrollTo(lenis, 'beauty-packages')}>
                         <a className={`text-black text-2xl cursor-pointer font-serif hover:text-primary`}>
                             Beauty Pakete
                         </a>
                     </li>
-                    <li className="px-6 py-2" onClick={() => handleScrollTo(lenis, 'testimonials')}>
-                        <a className={`text-black text-2xl cursor-pointer font-serif hover:text-primary`}>
+                    <li className="px-6 py-2" onClick={() => onMenuItemClick()}>
+                        <Link href={'/testimonials'} className={`text-black text-2xl cursor-pointer font-serif hover:text-primary`}>
                             Kundenmeinungen
-                        </a>
+                        </Link>
                     </li>
                     <li className="px-6 py-2" onClick={() => handleScrollTo(lenis, 'footer')}>
                         <a className={`text-black text-2xl cursor-pointer font-serif hover:text-primary`}>

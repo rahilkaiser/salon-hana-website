@@ -13,7 +13,8 @@ const SmoothScrollContainer: React.FC<SmoothScrollContainerProps> = ({ children 
         syncTouch: true
     }}>{
         children
-    }</ReactLenis>
+    }
+    </ReactLenis>
 };
 
 export default SmoothScrollContainer;
