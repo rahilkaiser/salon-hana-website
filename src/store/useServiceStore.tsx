@@ -48,6 +48,17 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
                     })
                 });
 
+                state.cart.push(service);
+
+                state.total = 0;
+                state.cart.map(ser => {
+                    if(ser.price){
+                        state.total += ser.price;
+                    }
+                })
+
+                state.qty = state.cart.length;
+
                 return {
                     ...state,
                 };
@@ -75,7 +86,19 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
                                 })
                         })
                     }
+                    state.cart = state.cart.filter(ser => ser.title !== service.title)
 
+                    state.total = 0;
+                    state.cart.map(ser => {
+                        if(ser.price){
+                            state.total += ser.price;
+                        }
+                    })
+
+                    state.qty = state.cart.length;
+
+
+                    console.log(state.total)
                 });
                 return {
                     ...state,
