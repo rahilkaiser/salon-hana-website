@@ -36,8 +36,8 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
 
                     cat.sub.forEach(s => {
                         s.services.forEach(ser => {
-                            if(ser.title == service.title) {
-                                if(cat.name != 'Alle') {
+                            if (ser.title == service.title) {
+                                if (cat.name != 'Alle') {
                                     cat.isSelected = true;
                                 }
                                 s.isSelected = true;
@@ -57,18 +57,25 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
         removeService: (service: Service) => {
             set(state => {
                 state.serviceMap.forEach(cat => {
-                    cat.sub.forEach((s, index) => {
-                        s.services.forEach(ser => {
 
-                            if(service.title == ser.title) {
-                                if(cat.name != 'Alle') {
-                                    cat.isSelected = false;
-                                }
-                                s.isSelected = false;
-                                ser.isSelected = false;
-                            }
+                    if (cat.isSelected == true) {
+                        cat.sub.forEach((s, index) => {
+                                s.services.forEach(ser => {
+                                    if (service.title == ser.title) {
+                                        const catNumSubSelection = cat.sub.filter(su => su.isSelected == true);
+                                        const subNumServicesSelection = s.services.filter(se => se.isSelected == true);
+                                        if (subNumServicesSelection.length == 1) {
+                                            s.isSelected = false;
+                                            if (cat.name != 'Alle' && catNumSubSelection.length == 1) {
+                                                cat.isSelected = false;
+                                            }
+                                        }
+                                        ser.isSelected = false;
+                                    }
+                                })
                         })
-                    })
+                    }
+
                 });
                 return {
                     ...state,
