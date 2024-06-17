@@ -1,6 +1,6 @@
 import {CATEGORIES, serviceMap, ServiceMap, SubCategory} from "@/components/data/ServiceData";
 
-const createAllCategory = (serviceMaps: ServiceMap[]): ServiceMap => {
+export const createAllCategory = (serviceMaps: ServiceMap[]): ServiceMap => {
     let allSubCategories: SubCategory[] = [];
 
     serviceMaps.forEach(category => {

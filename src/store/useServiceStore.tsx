@@ -1,7 +1,6 @@
 import {create} from "zustand";
 import {Service, serviceMap, ServiceMap, SubCategory} from "@/components/data/ServiceData";
-import {completeServiceMap} from "@/utils/Utils";
-import Services from "@/app/services/page";
+import {completeServiceMap, createAllCategory} from "@/utils/Utils";
 
 type ServiceStore = {
     qty: number;
@@ -14,7 +13,7 @@ type ServiceStore = {
     setSelectedCategory: (category: ServiceMap) => void;
     setSelectedSubcategory: (subCategory: SubCategory) => void;
     addService: (service: Service) => void
-    removeService: () => void
+    removeService: (service: Service) => void
 }
 
 
@@ -74,7 +73,7 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
                             }
                         })
                     })
-                }else {
+                } else {
                     updatedCategories.forEach(c => {
                         c.sub.forEach((s, index) => {
 
@@ -98,8 +97,46 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
             });
         },
 
-        removeService: () => {
+        removeService: (service: Service) => {
+            set(state => {
+                state.serviceMap.forEach(cat => {
+                    if (cat.isSelected) {
+                        const selectedSubs = cat.sub.filter(subF => subF.isSelected == true)
+                        cat.sub.map(subS => {
+                            if (subS.isSelected) {
+                                const selectedServices = subS.services.filter(s => s.isSelected == true);
 
+                                if (selectedServices.length == 1 && service.title == selectedServices[0].title) {
+                                    if (selectedSubs.length == 1) {
+                                        cat.isSelected = false;
+                                    }
+                                    subS.isSelected = false;
+
+                                }
+                                subS.services.forEach(ser => {
+                                    if (ser.title == service.title) {
+                                        ser.isSelected = false;
+
+
+
+                                    }
+                                })
+                                if(state.selectedCategory.name != 'Alle') {
+                                    state.serviceMap[0].sub.forEach((subCat, index) => {
+                                        if(subCat.name == subS.name) {
+                                            state.serviceMap[0].sub[index] = subS;
+                                        }
+                                    })
+                                }
+
+                            }
+                        })
+
+                    }
+                });
+                return {
+                    ...state,
+                };
+            });
         }
-
     }));

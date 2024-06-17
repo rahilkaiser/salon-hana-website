@@ -152,12 +152,14 @@ export default function Services() {
                                                 <p className="text-gray-800 font-semibold">{item.price} €</p>
                                                 {!item.isSelected ? <button
                                                     onClick={() => {
-                                                        // console.log("HELLO")
                                                         addService(item);
                                                     }}
                                                     className=" w-24 m-3 text-pink-600 font-semibold border-pink-600 border rounded-lg py-2">
                                                     Auswählen
                                                 </button> : <button
+                                                    onClick={() => {
+                                                        removeService(item);
+                                                    }}
                                                     className=" m-3 p-1 text-green-600 font-semibold border-green-600 border rounded-lg py-2">
                                                     Ausgewählt
                                                 </button>}
@@ -217,11 +219,14 @@ export default function Services() {
                                                             {!groupItem.isSelected ?
                                                                 <button
                                                                 onClick={() => {
-                                                                    groupItem.isSelected = true;
+                                                                    addService(groupItem)
                                                                 }}
                                                                 className=" w-24 m-3 text-pink-600 font-semibold border-pink-600 border rounded-lg py-2">
                                                                 Auswählen
                                                             </button> : <button
+                                                                    onClick={() => {
+                                                                        removeService(groupItem);
+                                                                    }}
                                                                 className=" m-3 p-1 text-green-600 font-semibold border-green-600 border rounded-lg py-2">
                                                                 Ausgewählt
                                                             </button>}
