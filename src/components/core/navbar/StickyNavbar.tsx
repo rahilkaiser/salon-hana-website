@@ -52,6 +52,7 @@ export const StickyNavbar = () => {
 
             <NavbarContent justify="end">
                 <NavbarItem>
+
                     <NavbarCTAButton/>
                 </NavbarItem>
             </NavbarContent>

@@ -34,16 +34,8 @@ export default function Services() {
         }
     };
 
-    // const [selectedCategory, setSelectedCategory] = useState<ServiceMap>(
-    //     completeServiceMap[0]
-    // );
-    // const [selectedSubcategory, setSelectedSubcategory] = useState<SubCategory>(
-    //     completeServiceMap[0].sub[0]
-    // );
-
     const [openItemId, setOpenItemId] = useState<string | undefined>(undefined);
 
-    // const addService = useServiceStore((state) => state.addService);
     const {
         total,
         qty,

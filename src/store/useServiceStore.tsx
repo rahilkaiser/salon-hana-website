@@ -31,68 +31,25 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
 
         addService: (service) => {
             set(state => {
-                const {selectedCategory, selectedSubCategory} = state;
 
-                // Update the services within the selected SubCategory
-                selectedSubCategory.isSelected = true;
-                const updatedServices = selectedSubCategory.services.map(s =>
-                    s.title === service.title ? {...s, isSelected: !s.isSelected} : s
-                );
+                state.serviceMap.forEach(cat => {
 
-                // Create a new SubCategory with updated services
-                const updatedSubCategory =
-                    {...selectedSubCategory, services: updatedServices};
-
-
-                selectedCategory.isSelected = true;
-                // Update the list of subcategories in the selected category
-                const updatedSubCategories = selectedCategory.sub.map(sub =>
-                    sub.name === selectedSubCategory.name ? updatedSubCategory : sub
-                );
-
-                const updatedCategory = {...selectedCategory, sub: updatedSubCategories};
-
-                // Update the list of subcategories in the selected category
-                const updatedCategories = state.serviceMap.map(cate =>
-                    cate.name === selectedCategory.name ? updatedCategory : cate
-                );
-
-                if (selectedCategory.name == 'Alle') {
-                    updatedCategories.forEach(c => {
-                        c.sub.forEach((s, index) => {
-                            if (s.name == selectedSubCategory.name && c.name != 'Alle') {
-                                c.isSelected = true;
-                                s.services.forEach(ser => {
-                                    if (service.title == ser.title) {
-                                        ser.isSelected = true;
-                                    }
-                                })
-                            }
-                            if (s.name == selectedSubCategory.name) {
+                    cat.sub.forEach(s => {
+                        s.services.forEach(ser => {
+                            if(ser.title == service.title) {
+                                if(cat.name != 'Alle') {
+                                    cat.isSelected = true;
+                                }
                                 s.isSelected = true;
+                                ser.isSelected = true;
                             }
                         })
-                    })
-                } else {
-                    updatedCategories.forEach(c => {
-                        c.sub.forEach((s, index) => {
 
-                            if (s.name == selectedSubCategory.name) {
-                                s.services.forEach(ser => {
-                                    if (service.title == ser.title) {
-                                        ser.isSelected = true;
-                                    }
-                                })
-                            }
-                        })
                     })
-                }
+                });
 
                 return {
                     ...state,
-                    serviceMap: [...updatedCategories],
-                    selectedCategory: updatedCategory,
-                    selectedSubCategory: updatedSubCategory
                 };
             });
         },
@@ -100,39 +57,18 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
         removeService: (service: Service) => {
             set(state => {
                 state.serviceMap.forEach(cat => {
-                    if (cat.isSelected) {
-                        const selectedSubs = cat.sub.filter(subF => subF.isSelected == true)
-                        cat.sub.map(subS => {
-                            if (subS.isSelected) {
-                                const selectedServices = subS.services.filter(s => s.isSelected == true);
+                    cat.sub.forEach((s, index) => {
+                        s.services.forEach(ser => {
 
-                                if (selectedServices.length == 1 && service.title == selectedServices[0].title) {
-                                    if (selectedSubs.length == 1) {
-                                        cat.isSelected = false;
-                                    }
-                                    subS.isSelected = false;
-
+                            if(service.title == ser.title) {
+                                if(cat.name != 'Alle') {
+                                    cat.isSelected = false;
                                 }
-                                subS.services.forEach(ser => {
-                                    if (ser.title == service.title) {
-                                        ser.isSelected = false;
-
-
-
-                                    }
-                                })
-                                if(state.selectedCategory.name != 'Alle') {
-                                    state.serviceMap[0].sub.forEach((subCat, index) => {
-                                        if(subCat.name == subS.name) {
-                                            state.serviceMap[0].sub[index] = subS;
-                                        }
-                                    })
-                                }
-
+                                s.isSelected = false;
+                                ser.isSelected = false;
                             }
                         })
-
-                    }
+                    })
                 });
                 return {
                     ...state,
