@@ -13,9 +13,15 @@ import {MenuToggleComponent} from "@/components/core/navbar/components/MenuToggl
 import {NavbarCTAButton} from "@/components/core/navbar/components/NavbarCTAButton";
 import {useState} from "react";
 import Link from "next/link";
+import {useServiceStore} from "@/store/useServiceStore";
 
 export const StickyNavbar = () => {
     const [isMenuOpen, setMenuOpen] = useState(false);
+
+    const {
+        total,
+        qty
+    } = useServiceStore();
 
     const toggleMenu = () => {
         setMenuOpen(!isMenuOpen);

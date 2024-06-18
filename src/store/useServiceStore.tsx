@@ -7,7 +7,7 @@ type ServiceStore = {
     total: number;
     cart: Service[];
     serviceMap: ServiceMap[];
-    package: ServiceMap;
+    packages: ServiceMap;
     selectedCategory: ServiceMap;
     selectedSubCategory: SubCategory;
 
@@ -21,7 +21,7 @@ type ServiceStore = {
 export const useServiceStore = create<ServiceStore>((set, get) => (
     {
         serviceMap: completeServiceMap,
-        package: packages,
+        packages: packages,
         total: 0,
         qty: 0,
         cart: [],
@@ -52,10 +52,10 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
                     });
 
                 } else {
-                    state.package.sub.forEach(s => {
+                    state.packages.sub.forEach(s => {
                         s.services.forEach(ser => {
                             if (ser.title == service.title) {
-                                state.package.isSelected = true;
+                                state.packages.isSelected = true;
                                 s.isSelected = true;
                                 ser.isSelected = true;
                             }
@@ -105,15 +105,15 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
                         }
                     });
                 } else {
-                    state.package.sub.forEach(s => {
+                    state.packages.sub.forEach(s => {
                         s.services.forEach(ser => {
                             if(service.title == ser.title) {
-                                const catNumSubSelection = state.package.sub.filter(su => su.isSelected == true);
+                                const catNumSubSelection = state.packages.sub.filter(su => su.isSelected == true);
                                 const subNumServicesSelection = s.services.filter(se => se.isSelected == true);
                                 if (subNumServicesSelection.length == 1) {
                                     s.isSelected = false;
                                     if (catNumSubSelection.length == 1) {
-                                        state.package.isSelected = false;
+                                        state.packages.isSelected = false;
                                     }
                                 }
                                 ser.isSelected = false;

@@ -5,12 +5,7 @@ import {motion} from "framer-motion";
 import {useEffect, useState} from "react";
 import {
     CATEGORIES,
-    packages,
-    Service,
     ServiceMap,
-    serviceMap,
-    SUBCATEGORIES,
-    SubCategory
 } from "@/components/data/ServiceData";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronDown, faChevronUp} from "@fortawesome/free-solid-svg-icons";
@@ -51,6 +46,7 @@ export default function Services() {
         selectedCategory,
         selectedSubCategory,
         serviceMap,
+        packages,
         addService,
         removeService,
         setSelectedSubcategory,

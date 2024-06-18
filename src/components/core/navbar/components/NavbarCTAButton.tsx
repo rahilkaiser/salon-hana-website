@@ -1,15 +1,15 @@
 'use client'
 import {motion} from "framer-motion";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCalendar} from "@fortawesome/free-solid-svg-icons";
+import {faSpa} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 export const NavbarCTAButton = () => {
 
     const buttonVariants = {
-        hidden: { scale: 0.8, opacity: 0 , x:500},
+        hidden: {scale: 0.8, opacity: 0, x: 500},
         visible: {
-            x:0,
+            x: 0,
             scale: 1,
             opacity: 1,
             transition: {
@@ -18,7 +18,7 @@ export const NavbarCTAButton = () => {
             }
         },
         hover: {
-            transition: { duration: 0.3 }, // smoother transition
+            transition: {duration: 0.3}, // smoother transition
             backgroundColor: "#db2777",
             color: "#ffffff",
         }
@@ -26,15 +26,16 @@ export const NavbarCTAButton = () => {
 
     return (
         <Link href={'/services'}>
-        <motion.button
-            initial="hidden"
-            animate="visible"
-            whileHover="hover"
-            variants={buttonVariants}
-            className="px-4 py-2 sm:px-8 sm:py-3 bg-primary text-white text-lg rounded capitalize">
-            <FontAwesomeIcon icon={faCalendar} className="px-2"/>
-            <span className="hidden sm:inline">Termin Buchen</span>
-        </motion.button>
+            <motion.button
+                initial="hidden"
+                animate="visible"
+                whileHover="hover"
+                variants={buttonVariants}
+                className="px-4 py-2 sm:px-8 sm:py-3 bg-primary text-white text-lg rounded uppercase">
+                <FontAwesomeIcon icon={faSpa} className="md:pr-2"/>
+
+                <span className="hidden sm:inline">ZU den Services</span>
+            </motion.button>
         </Link>
     );
 };

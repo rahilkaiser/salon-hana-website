@@ -6,6 +6,7 @@ import {StickyNavbar} from "@/components/core/navbar/StickyNavbar";
 import SmoothScrollContainer from "@/components/core/smooth-scrollbar-container/SmoothScrollContainer";
 import Section from "@/components/core/section-component/SectionComponent";
 import {Footer} from "@/components/sections/footer/Footer";
+import {CartInfo} from "@/components/core/cart-info/CartInfo";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -64,8 +65,9 @@ export default function RootLayout({
     <html lang="de">
       <body className={inter.className}>
       <NextUIProvider>
-        <header className="sticky top-0 z-50"><StickyNavbar/></header>
+        <header className="sticky top-0 z-20"><StickyNavbar/></header>
         <main className="font-serif">
+          <CartInfo></CartInfo>
           <SmoothScrollContainer>
             {children}
           </SmoothScrollContainer>
