@@ -68,7 +68,6 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
         removeService: (service: Service) => {
             set(state => {
                 state.serviceMap.forEach(cat => {
-
                     if (cat.isSelected == true) {
                         cat.sub.forEach((s, index) => {
                                 s.services.forEach(ser => {
@@ -96,8 +95,6 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
                     })
 
                     state.qty = state.cart.length;
-
-
                     console.log(state.total)
                 });
                 return {

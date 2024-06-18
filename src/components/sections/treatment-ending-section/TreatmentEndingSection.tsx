@@ -3,6 +3,7 @@ import React, {useEffect, useRef, useState} from "react";
 import Lenis from "@studio-freight/lenis";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from "next/link";
 
 export const TreatmentEndingSection = () => {
     const ref = useRef<HTMLDivElement>(null);
@@ -84,11 +85,13 @@ export const TreatmentEndingSection = () => {
                 <h1 className="text-white text-lg md:text-4xl uppercase text-center my-16">
                     Genießen Sie Ihre exklusive <span>Gesichtsbehandlung</span>
                 </h1>
-                <button
-                    className="bg-transparent border-white text-white inline-block px-8 py-3 border rounded hover:bg-primary hover:border-primary transition duration-300 font-semibold text-sm uppercase"
-                    onClick={clicked}>
-                    Zu den Facials
-                </button>
+                <Link href={'/services?category=facials'}>
+                    <button
+                        className="bg-transparent border-white text-white inline-block px-8 py-3 border rounded hover:bg-primary hover:border-primary transition duration-300 font-semibold text-sm uppercase"
+                        onClick={clicked}>
+                        Zu den Facials
+                    </button>
+                </Link>
 
             </div>
         </div>

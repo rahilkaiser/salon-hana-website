@@ -2,15 +2,16 @@
 
 import {Card, CardFooter, Image, Button, Accordion, Divider} from "@nextui-org/react";
 import {motion} from "framer-motion";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {CATEGORIES, Service, ServiceMap, serviceMap, SUBCATEGORIES, SubCategory} from "@/components/data/ServiceData";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronDown, faChevronUp} from "@fortawesome/free-solid-svg-icons";
 import {useServiceStore} from "@/store/useServiceStore";
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import {useSearchParams} from "next/navigation";
 
 export default function Services() {
-
+    const searchParams = useSearchParams();
     const cardVariants = {
         selected: {
             scale: 1.1,
@@ -57,9 +58,31 @@ export default function Services() {
     };
 
 
+    useEffect(() => {
+        let category = searchParams.get('category');
+
+        switch (category){
+            case 'facials':
+                category = CATEGORIES.FACIAL;
+            break;
+            case 'hairRemoval':
+                category = CATEGORIES.HAIRREM;
+            break;
+            case 'dental':
+                category = CATEGORIES.TEETH;
+            break;
+        }
+
+        if (category) {
+            const foundCategory = serviceMap.find(cat => cat.name.toLowerCase() === category.toLowerCase());
+            if (foundCategory) {
+                selectCategory(foundCategory);
+            }
+        }
+    }, [searchParams, serviceMap]);
+
     const selectCategory = (category: ServiceMap) => {
         setSelectedCategory(category);
-        // const newCategory = completeServiceMap.find(c => c.name === categoryName);
         if (category) {
             setSelectedSubcategory(category.sub[0]);
         }
