@@ -79,10 +79,20 @@ export default function Services() {
             case 'dental':
                 category = CATEGORIES.TEETH;
             break;
+            case 'package':
+                category = CATEGORIES.PACKAGE;
+            break;
         }
 
         if (category) {
-            const foundCategory = serviceMap.find(cat => cat.name.toLowerCase() === category.toLowerCase());
+            let foundCategory = null;
+
+            if(category == CATEGORIES.PACKAGE) {
+                foundCategory = packages;
+            } else {
+                foundCategory = serviceMap.find(cat => cat.name.toLowerCase() === category.toLowerCase());
+            }
+
             if (foundCategory) {
                 selectCategory(foundCategory);
             }

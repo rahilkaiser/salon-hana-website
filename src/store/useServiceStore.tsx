@@ -52,7 +52,6 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
                     });
 
                 } else {
-
                     state.package.sub.forEach(s => {
                         s.services.forEach(ser => {
                             if (ser.title == service.title) {
@@ -62,7 +61,6 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
                             }
                         })
                     })
-
                 }
 
                 state.cart.push(service);
@@ -85,9 +83,11 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
 
         removeService: (service: Service) => {
             set(state => {
-                state.serviceMap.forEach(cat => {
-                    if (cat.isSelected == true) {
-                        cat.sub.forEach((s, index) => {
+
+                if(state.selectedCategory.name != CATEGORIES.PACKAGE) {
+                    state.serviceMap.forEach(cat => {
+                        if (cat.isSelected == true) {
+                            cat.sub.forEach((s, index) => {
                                 s.services.forEach(ser => {
                                     if (service.title == ser.title) {
                                         const catNumSubSelection = cat.sub.filter(su => su.isSelected == true);
@@ -101,20 +101,39 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
                                         ser.isSelected = false;
                                     }
                                 })
-                        })
-                    }
-                    state.cart = state.cart.filter(ser => ser.title !== service.title)
-
-                    state.total = 0;
-                    state.cart.map(ser => {
-                        if(ser.price){
-                            state.total += ser.price;
+                            })
                         }
+                    });
+                } else {
+                    state.package.sub.forEach(s => {
+                        s.services.forEach(ser => {
+                            if(service.title == ser.title) {
+                                const catNumSubSelection = state.package.sub.filter(su => su.isSelected == true);
+                                const subNumServicesSelection = s.services.filter(se => se.isSelected == true);
+                                if (subNumServicesSelection.length == 1) {
+                                    s.isSelected = false;
+                                    if (catNumSubSelection.length == 1) {
+                                        state.package.isSelected = false;
+                                    }
+                                }
+                                ser.isSelected = false;
+                            }
+                        })
                     })
+                }
 
-                    state.qty = state.cart.length;
-                    console.log(state.total)
-                });
+                state.cart = state.cart.filter(ser => ser.title !== service.title)
+
+                state.total = 0;
+                state.cart.map(ser => {
+                    if(ser.price){
+                        state.total += ser.price;
+                    }
+                })
+
+                state.qty = state.cart.length;
+                console.log(state.total)
+
                 return {
                     ...state,
                 };

@@ -56,7 +56,7 @@ export const BeautyPackages = () => {
             {/*        <ServiceCard service={services[2]}/>*/}
             {/*    </div>*/}
                 <div className="py-12 mx-auto">
-                    <Link href={'/services?products=packages'}
+                    <Link href={'/services?category=package'}
                       className="bg-white inline-block px-8 py-3 border-black border text-sm rounded hover:bg-primary hover:border-primary hover:text-white transition duration-300 capitalize font-bold">
                     Alle Beauty Pakete
                 </Link></div>
