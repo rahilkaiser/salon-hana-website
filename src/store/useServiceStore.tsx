@@ -1,12 +1,13 @@
 import {create} from "zustand";
-import {Service, serviceMap, ServiceMap, SubCategory} from "@/components/data/ServiceData";
-import {completeServiceMap, createAllCategory} from "@/utils/Utils";
+import {CATEGORIES, packages, Service, ServiceMap, SubCategory} from "@/components/data/ServiceData";
+import {completeServiceMap} from "@/utils/Utils";
 
 type ServiceStore = {
     qty: number;
     total: number;
     cart: Service[];
     serviceMap: ServiceMap[];
+    package: ServiceMap;
     selectedCategory: ServiceMap;
     selectedSubCategory: SubCategory;
 
@@ -20,6 +21,7 @@ type ServiceStore = {
 export const useServiceStore = create<ServiceStore>((set, get) => (
     {
         serviceMap: completeServiceMap,
+        package: packages,
         total: 0,
         qty: 0,
         cart: [],
@@ -32,21 +34,36 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
         addService: (service) => {
             set(state => {
 
-                state.serviceMap.forEach(cat => {
+                if(state.selectedCategory.name != CATEGORIES.PACKAGE) {
+                    state.serviceMap.forEach(cat => {
 
-                    cat.sub.forEach(s => {
+                        cat.sub.forEach(s => {
+                            s.services.forEach(ser => {
+                                if (ser.title == service.title) {
+                                    if (cat.name != 'Alle') {
+                                        cat.isSelected = true;
+                                    }
+                                    s.isSelected = true;
+                                    ser.isSelected = true;
+                                }
+                            })
+
+                        })
+                    });
+
+                } else {
+
+                    state.package.sub.forEach(s => {
                         s.services.forEach(ser => {
                             if (ser.title == service.title) {
-                                if (cat.name != 'Alle') {
-                                    cat.isSelected = true;
-                                }
+                                state.package.isSelected = true;
                                 s.isSelected = true;
                                 ser.isSelected = true;
                             }
                         })
-
                     })
-                });
+
+                }
 
                 state.cart.push(service);
 
@@ -62,6 +79,7 @@ export const useServiceStore = create<ServiceStore>((set, get) => (
                 return {
                     ...state,
                 };
+
             });
         },
 

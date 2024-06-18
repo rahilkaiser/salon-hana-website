@@ -3,7 +3,15 @@
 import {Card, CardFooter, Image, Button, Accordion, Divider} from "@nextui-org/react";
 import {motion} from "framer-motion";
 import {useEffect, useState} from "react";
-import {CATEGORIES, Service, ServiceMap, serviceMap, SUBCATEGORIES, SubCategory} from "@/components/data/ServiceData";
+import {
+    CATEGORIES,
+    packages,
+    Service,
+    ServiceMap,
+    serviceMap,
+    SUBCATEGORIES,
+    SubCategory
+} from "@/components/data/ServiceData";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronDown, faChevronUp} from "@fortawesome/free-solid-svg-icons";
 import {useServiceStore} from "@/store/useServiceStore";
@@ -128,6 +136,37 @@ export default function Services() {
                             </Card>
                         </motion.div>
                     ))}
+
+                    <motion.div
+                        className={`md:absolute md:right-32 max-w-[12rem] md:flex-grow`}
+                        variants={cardVariants}
+                        animate={selectedCategory === packages ? 'selected' : 'unselected'}>
+                        <Card
+                            isPressable
+                            onPress={() => selectCategory(packages)}
+                            isFooterBlurred
+                            radius="lg"
+                            className={`border-none shadow-xl ${selectedCategory === packages ? 'ring-2 ring-primary' : ''}`}
+                        >
+                            <Image
+                                alt={packages.name}
+                                className="object-cover"
+                                height={200}
+                                width={200}
+                                src={packages.image}
+                            />
+                            <CardFooter
+                                className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+                                <p className="text-white/80 text-center w-full">{packages.name}</p>
+                            </CardFooter>
+                            {(packages.isSelected) && (
+                                <FontAwesomeIcon
+                                    icon={faCheckCircle}
+                                    className="absolute top-0 right-0 m-2 text-primary text-2xl z-50"
+                                />
+                            )}
+                        </Card>
+                    </motion.div>
                 </div>
                 <div className="py-16">
                     <div className="flex flex-col md:flex-row ">
@@ -142,7 +181,8 @@ export default function Services() {
                                                     onClick={() => setSelectedSubcategory(sub)}>
                                             {sub.name}
                                             {sub.isSelected && (
-                                                <FontAwesomeIcon icon={faCheckCircle} className="text-pink-600 text-xl absolute right-2" />
+                                                <FontAwesomeIcon icon={faCheckCircle}
+                                                                 className="text-pink-600 text-xl absolute right-2"/>
                                             )}
                                             <Divider></Divider>
                                         </motion.div>

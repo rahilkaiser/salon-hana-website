@@ -21,16 +21,12 @@ export interface Service {
     group?: Service[];
 }
 
-// export interface DetailedServicesMap {
-//     [key: string]: ServiceDetail[];
-// }
-
 export enum CATEGORIES {
     ALL = 'Alle',
     HAIRREM = "Haarentfernung",
     FACIAL = "Gesicht",
     TEETH = "Medizinisch und zahnmedizinisch",
-
+    PACKAGE = 'Beauty Packete'
 }
 
 export enum SUBCATEGORIES {
@@ -42,23 +38,124 @@ export enum SUBCATEGORIES {
     TEETH_BLEACH = "Zahnaufhellung",
 }
 
+export const packages: ServiceMap = {
+    name: CATEGORIES.PACKAGE,
+    image: "https://nextui.org/images/hero-card.jpeg",
+    sub: [
+        {
+            name: SUBCATEGORIES.BROWS,
+            services: [
+                {
+                    title: "Wimpernlifting + Browlifting",
+                    description: "A quick and effective hair removal service using natural sugar paste.",
+                    price: 90,
+                    isSelected: false,
+                    time: "1 Std."
+                },
+                {
+
+                    title: "Wimpernlifting + Browlifting inkl. färben",
+                    description: "A quick and effective hair removal service using natural sugar paste.",
+                    price: 100,
+                    isSelected: false,
+                    time: "1 Std."
+                },
+                {
+                    title: "Henna Brows + zupfen",
+                    description: "A quick and effective hair removal service using natural sugar paste.",
+                    price: 60,
+                    isSelected: false,
+                    time: "1 Std."
+                },
+                {
+                    title: "Browlifting + zupfen",
+                    description: "A quick and effective hair removal service using natural sugar paste.",
+                    price: 60,
+                    isSelected: false,
+                    time: "45 Min."
+                },
+                {
+                    title: "Wimpernlifting + Henna Brows + Augenbrauen zupfen",
+                    description: "A quick and effective hair removal service using natural sugar paste.",
+                    price: 115,
+                    isSelected: false,
+                    time: "1 Std."
+                },
+                {
+                    title: "Wimpernlifting + Browlifting + Aquafacial",
+                    description: "A quick and effective hair removal service using natural sugar paste.",
+                    price: 170,
+                    isSelected: false,
+                    time: "1 Std. 30 Min."
+                },
+                {
+                    title: "Wimpernlifting + Browlifting (inkl. färben) + Augenbrauen zupfen + Aquafacial",
+                    description: "A quick and effective hair removal service using natural sugar paste.",
+                    price: 170,
+                    isSelected: false,
+                    time: "1 Std. 45 Min."
+                },
+            ]
+        },
+        {
+            name: SUBCATEGORIES.SUGARING,
+            services: [
+                {
+                    title: "Sugaring Arme komplett + Achseln",
+                    description: "A quick and effective hair removal service using natural sugar paste.",
+                    price: 50,
+                    isSelected: false,
+                    time: "1 Std."
+                },
+                {
+                    title: "Sugaring Achseln + Intim komplett",
+                    description: "A quick and effective hair removal service using natural sugar paste.",
+                    price: 45,
+                    isSelected: false,
+                    time: "30 Min."
+                },
+                {
+                    title: "Sugaring Bikinilinie + Achseln",
+                    description: "A quick and effective hair removal service using natural sugar paste.",
+                    price: 30,
+                    isSelected: false,
+                    time: "25 Min."
+                },
+                {
+                    title: "Sugaring Arme komplett + Unterschenkel",
+                    description: "A quick and effective hair removal service using natural sugar paste.",
+                    price: 60,
+                    isSelected: false,
+                    time: "1 Std."
+                },
+                {
+                    title: "Sugaring Arme komplett + Achseln + Unterschenkel",
+                    description: "A quick and effective hair removal service using natural sugar paste.",
+                    price: 80,
+                    isSelected: false,
+                    time: "1 Std."
+                },
+                {
+                    title: "Sugaring Beine komplett + Achseln + Intim komplett",
+                    description: "A quick and effective hair removal service using natural sugar paste.",
+                    price: 110,
+                    isSelected: false,
+                    time: "1 Std."
+                },
+                {
+                    title: "Sugaring Beine komplett+Achseln+Bikinilinie",
+                    description: "A quick and effective hair removal service using natural sugar paste.",
+                    price: 90,
+                    isSelected: false,
+                    time: "1 Std. 30 Min."
+                },
+            ]
+        }
+    ]
+}
+
 
 export const serviceMap: ServiceMap[] = [
-    // {
-    //     name: CATEGORIES.ALL,
-    //     image: "https://nextui.org/images/hero-card.jpeg",
-    //     sub: [
-    //         {
-    //
-    //     }
-    //         SUBCATEGORIES.COSM_TEETH,
-    //         SUBCATEGORIES.SUGARING,
-    //         SUBCATEGORIES.FACIAL,
-    //         SUBCATEGORIES.BROWS,
-    //         SUBCATEGORIES.LASER,
-    //         SUBCATEGORIES.TEETH_BLEACH
-    //     ]
-    // },
     {
         name: CATEGORIES.HAIRREM,
         image: "https://nextui.org/images/hero-card.jpeg",
@@ -76,56 +173,56 @@ export const serviceMap: ServiceMap[] = [
                     {
                         title: "Damen Sugaring - Arme komplett",
                         description: "An extended sugaring session that includes skin conditioning treatments.",
-                        price: 40 ,
+                        price: 40,
                         isSelected: false,
                         time: "25"
                     },
                     {
                         title: "Damen Sugaring - Unterschenkel",
                         description: "An extended sugaring session that includes skin conditioning treatments.",
-                        price: 38 ,
+                        price: 38,
                         isSelected: false,
                         time: "25"
                     },
                     {
                         title: "Damen Sugaring - Oberschenkel",
                         description: "An extended sugaring session that includes skin conditioning treatments.",
-                        price: 38 ,
+                        price: 38,
                         isSelected: false,
                         time: "30"
                     },
                     {
                         title: "Damen Sugaring - Beine komplett",
                         description: "An extended sugaring session that includes skin conditioning treatments.",
-                        price: 38 ,
+                        price: 38,
                         isSelected: false,
                         time: "45"
                     },
                     {
                         title: "Damen Sugaring - Achseln",
                         description: "An extended sugaring session that includes skin conditioning treatments.",
-                        price: 65 ,
+                        price: 65,
                         isSelected: false,
                         time: "15"
                     },
                     {
                         title: "Damen Sugaring - Bikini & Achseln",
                         description: "An extended sugaring session that includes skin conditioning treatments.",
-                        price: 24 ,
+                        price: 24,
                         isSelected: false,
                         time: "40"
                     },
                     {
                         title: "Damen Sugaring - Intim",
                         description: "An extended sugaring session that includes skin conditioning treatments.",
-                        price: 35 ,
+                        price: 35,
                         isSelected: false,
                         time: "30"
                     },
                     {
                         title: "Damen Sugaring - Bikini",
                         description: "An extended sugaring session that includes skin conditioning treatments.",
-                        price: 38 ,
+                        price: 38,
                         isSelected: false,
                         time: "30"
                     }
@@ -137,67 +234,67 @@ export const serviceMap: ServiceMap[] = [
                     {
                         title: "Dauerhafte Haarentfernung - Gesicht inklusive Hals",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 40 ,
+                        price: 40,
                         isSelected: false,
                         time: "15 Min."
                     }, {
                         title: "Dauerhafte Haarentfernung - Oberlippe und Kinn",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 25 ,
+                        price: 25,
                         isSelected: false,
                         time: "15 Min."
                     }, {
                         title: "Dauerhafte Haarentfernung - Rücken komplett",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 50 ,
+                        price: 50,
                         isSelected: false,
                         time: "30 Min."
                     }, {
                         title: "Dauerhafte Haarentfernung - Achseln",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 45 ,
+                        price: 45,
                         isSelected: false,
                         time: "25 Min."
                     }, {
                         title: "Dauerhafte Haarentfernung - Arme komplett inklusive Achseln",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 70 ,
+                        price: 70,
                         isSelected: false,
                         time: "40 Min."
                     }, {
                         title: "Dauerhafte Haarentfernung - Bauch & Brust",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 55 ,
+                        price: 55,
                         isSelected: false,
                         time: "30 Min."
                     }, {
                         title: "Dauerhafte Haarentfernung - Beine komplett",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 75 ,
+                        price: 75,
                         isSelected: false,
                         time: "40 Min."
                     }, {
                         title: "Dauerhafte Haarentfernung - Oberschenkel",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 40 ,
+                        price: 40,
                         isSelected: false,
                         time: "20 Min."
                     }, {
                         title: "Dauerhafte Haarentfernung - Unterschenkel",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 40 ,
+                        price: 40,
                         isSelected: false,
                         time: "20 Min."
                     }, {
                         title: "Dauerhafte Haarentfernung - Intim",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 70 ,
+                        price: 70,
                         isSelected: false,
                         time: "30 Min."
                     }, {
                         title: "Dauerhafte Haarentfernung - Ganzkörper",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 180 ,
+                        price: 180,
                         isSelected: false,
                         time: "1 Std."
                     },
@@ -217,7 +314,7 @@ export const serviceMap: ServiceMap[] = [
                     {
                         title: "Gesichtsbehandlung - Microneedling",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 99 ,
+                        price: 99,
                         isSelected: false,
                         time: "1 Std."
                     },
@@ -225,14 +322,14 @@ export const serviceMap: ServiceMap[] = [
 
                         title: "Gesichtsbehandlung - Aquafacial",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 95 ,
+                        price: 95,
                         isSelected: false,
                         time: "30"
                     },
                     {
                         title: "Gesichtsbehandlung - SkinScrubber",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 80 ,
+                        price: 80,
                         isSelected: false,
                         time: "45"
                     },
@@ -244,14 +341,14 @@ export const serviceMap: ServiceMap[] = [
                             {
                                 title: "BB Glow - nur Augenringe",
                                 description: "A quick and effective hair removal service using natural sugar paste.",
-                                price: 80 ,
+                                price: 80,
                                 isSelected: false,
                                 time: "30 Min."
                             },
                             {
                                 title: "BB Glow",
                                 description: "A quick and effective hair removal service using natural sugar paste.",
-                                price: 90 ,
+                                price: 90,
                                 isSelected: false,
                                 time: "1 Std."
                             },
@@ -265,41 +362,41 @@ export const serviceMap: ServiceMap[] = [
                     {
                         title: "Wimpernlifting & Färben",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 60 ,
+                        price: 60,
                         isSelected: false,
                         time: "1 Std."
                     },
                     {
                         title: "Augenbrauenlifting & Färben",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 55 ,
+                        price: 55,
                         isSelected: false,
                         time: "1 Std."
                     },
                     {
                         title: "Henna Brows",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 55 ,
+                        price: 55,
                         isSelected: false,
                         time: "30 Min."
                     },
                     {
                         title: "Wimpern färben",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 15 ,
+                        price: 15,
                         isSelected: false,
                         time: "15 Min."
                     }, {
                         title: "Augenbrauen färben",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 15 ,
+                        price: 15,
                         isSelected: false,
                         time: "15 Min."
                     },
                     {
                         title: "Augenbrauen zupfen",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 15 ,
+                        price: 15,
                         isSelected: false,
                         time: "15 Min."
                     },
@@ -317,7 +414,7 @@ export const serviceMap: ServiceMap[] = [
                     {
                         title: "Zahnbleaching",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 125 ,
+                        price: 125,
                         isSelected: false,
                         time: "45"
                     },
@@ -329,14 +426,14 @@ export const serviceMap: ServiceMap[] = [
                     {
                         title: "Aufrischung innerhalb von 3 Monaten",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 55 ,
+                        price: 55,
                         isSelected: false,
                         time: "30 Min."
                     },
                     {
                         title: "komplett",
                         description: "A quick and effective hair removal service using natural sugar paste.",
-                        price: 125 ,
+                        price: 125,
                         isSelected: false,
                         time: "1 Std."
                     }
