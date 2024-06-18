@@ -24,7 +24,11 @@ export const CartInfo = () => {
     const buttonVariants = {
         hidden: { opacity: 0 },
         visible: { opacity: 1 },
-        hover: { scale: 1.1 }
+        hover: {
+            transition: {duration: 0.3}, // smoother transition
+            backgroundColor: "#db2777",
+            color: "#ffffff",
+        }
     };
 
     return (
@@ -49,9 +53,9 @@ export const CartInfo = () => {
                             animate="visible"
                             whileHover="hover"
                             variants={buttonVariants}
-                            className="px-4 py-2 sm:px-8 sm:py-3 bg-primary text-white text-lg rounded capitalize"
+                            className="px-2 py-2 sm:px-8 sm:py-3 bg-primary text-white text-lg rounded capitalize"
                         >
-                            <FontAwesomeIcon icon={faCalendar} className="px-2" />
+                            <FontAwesomeIcon icon={faCalendar} className="pr-2" />
                             <span className="hidden sm:inline">Termin Buchen</span>
                         </motion.button>
                     </motion.div>
