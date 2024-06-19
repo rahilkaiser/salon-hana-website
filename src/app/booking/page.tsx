@@ -63,7 +63,6 @@ export default function Booking() {
 
 
     useEffect(() => {
-        // Cleanup to remove event listener when the component unmounts
         return () => removeWheelListener();
     }, [removeWheelListener]);
 
@@ -130,7 +129,7 @@ export default function Booking() {
                         <div ref={scrollRef}
                              onMouseEnter={addWheelListener}
                              onMouseLeave={removeWheelListener}
-                             className="flex flex-col gap-2 overflow-auto max-h-80">
+                             className="flex flex-col gap-1 overflow-y-auto max-h-80 overflow-x-hidden">
                             <div
                                 className="w-[260px] border-small px-1 py-2 rounded-small border-default-200 dark:border-default-100 ">
                                 {["10:00", "10:20", "10:40", "11:00", "11:20", "11:40", "12:00", "12:20", "12:40", "13:00", "13:20", "13:40"].map(time => (
@@ -152,7 +151,6 @@ export default function Booking() {
                                     </Listbox>
                                 ))}
                             </div>
-                            <p className="text-small text-default-500">Selected value: {selectedValueTime}</p>
                         </div>
                     </div>
                     <div className="flex flex-col w-full font-semibold pl-8 items-stretch">
@@ -195,7 +193,6 @@ export default function Booking() {
 
                 </div>
             </div>
-            
         </motion.div>
     );
 }
