@@ -12,6 +12,7 @@ import {faChevronDown, faChevronUp} from "@fortawesome/free-solid-svg-icons";
 import {useServiceStore} from "@/store/useServiceStore";
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import {useSearchParams} from "next/navigation";
+import {CartInfo} from "@/components/core/cart-info/CartInfo";
 
 export default function Services() {
     const searchParams = useSearchParams();
@@ -105,6 +106,7 @@ export default function Services() {
 
     return (
         <div className="w-full py-8 text-start bg-accent sm:py-16">
+            <CartInfo></CartInfo>
             <div className="max-w-7xl mx-auto px-4 sm:px-8">
                 <h1>ALLE SERVICES</h1>
                 <div

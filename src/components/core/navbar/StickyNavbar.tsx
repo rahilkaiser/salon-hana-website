@@ -14,10 +14,11 @@ import {NavbarCTAButton} from "@/components/core/navbar/components/NavbarCTAButt
 import {useState} from "react";
 import Link from "next/link";
 import {useServiceStore} from "@/store/useServiceStore";
+import {usePathname} from "next/navigation";
 
 export const StickyNavbar = () => {
     const [isMenuOpen, setMenuOpen] = useState(false);
-
+    const pathName = usePathname();
     const {
         total,
         qty
@@ -58,8 +59,9 @@ export const StickyNavbar = () => {
 
             <NavbarContent justify="end">
                 <NavbarItem>
+                    {(pathName !== "/services" && pathName !== "/booking") &&
+                        <NavbarCTAButton/>}
 
-                    <NavbarCTAButton/>
                 </NavbarItem>
             </NavbarContent>
 

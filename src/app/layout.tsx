@@ -67,7 +67,6 @@ export default function RootLayout({
       <NextUIProvider>
         <header className="sticky top-0 z-20"><StickyNavbar/></header>
         <main className="font-serif">
-          <CartInfo></CartInfo>
           <SmoothScrollContainer>
             {children}
           </SmoothScrollContainer>
