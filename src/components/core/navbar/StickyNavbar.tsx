@@ -59,7 +59,7 @@ export const StickyNavbar = () => {
 
             <NavbarContent justify="end">
                 <NavbarItem>
-                    {(pathName !== "/services" && pathName !== "/booking") &&
+                    {(pathName !== "/services" && pathName !== "/booking" && pathName !== "/checkout") &&
                         <NavbarCTAButton/>}
 
                 </NavbarItem>
