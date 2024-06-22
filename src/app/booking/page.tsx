@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import {Dropdown, DropdownItem, DropdownMenu, DropdownTrigger} from "@nextui-org/dropdown";
 import {Button, Calendar, Divider} from "@nextui-org/react";
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
-import {faArrowLeft, faArrowRight, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeft, faArrowRight, faCheckCircle, faUser} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Listbox, ListboxItem} from "@nextui-org/react";
 import {useRouter} from "next/navigation";
@@ -135,7 +135,7 @@ export default function Booking() {
                                  onMouseLeave={removeWheelListener}
                                  className="flex flex-col gap-1 overflow-y-auto max-h-80 overflow-x-hidden">
                                 <div
-                                    className="w-[260px] border-small px-1 py-2 rounded-small border-default-200 dark:border-default-100 ">
+                                    className="w-[260px] border-small  pr-2 py-2 rounded-small border-default-200 dark:border-default-100 ">
                                     {["10:00", "10:20", "10:40", "11:00", "11:20", "11:40", "12:00", "12:20", "12:40", "13:00", "13:20", "13:40"].map(time => (
                                         <Listbox key={time}
                                                  aria-label="Time selection"
@@ -145,9 +145,11 @@ export default function Booking() {
                                                  onSelectionChange={(keys => {
                                                      setSelectedKeysTime(keys.valueOf() as Set<string>)
                                                  })}>
-                                            <ListboxItem key={time} variant={"flat"}>
+                                            <ListboxItem key={time} variant={"light"}
+                                                         hideSelectedIcon={true}
+                                            >
                                                 <div
-                                                    className={`flex items-center justify-center w-full py-2 rounded 
+                                                    className={`flex items-center justify-center w-full py-2  rounded 
                                                 ${selectedKeysTime.has(time) ? 'bg-primary text-white' : 'bg-white text-gray-900'}`}>
                                                     {time}
                                                 </div>

@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import jsonrpc from "jsonrpc-lite";
+import {useJsApiLoader} from "@react-google-maps/api";
 
 /** Gets the Token to access the api
  *
@@ -90,3 +91,20 @@ export const getWorkers = async  (token:string | null) => {
         console.error('Error fetching events:', error);
     }
 }
+
+/** Google Maps Registration
+ *
+ * @constructor
+ */
+// actions/mapActions.ts
+export const loadGoogleMaps = async () => {
+    const apiKey = process.env.GOOGLE_MAPS_API_KEY; // Ensure this is set in your environment variables
+
+    if (!apiKey) {
+        throw new Error('Google Maps API key is not set in environment variables');
+    }
+
+    // You can add any additional server-side logic here if needed
+    return apiKey;
+};
+
