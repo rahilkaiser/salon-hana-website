@@ -65,9 +65,11 @@ export default function Contact() {
             variants={pageVariants}
             transition={pageTransition}
         >
-            <div className="ml-20 my-8">
-                <button className="cursor-pointer" onClick={() => { router.back(); }}>
-                    <FontAwesomeIcon icon={faArrowLeft} size="1x" className="text-lg text-primary" />
+            <div className="ml-20 my-8 ">
+                <button className="cursor-pointer" onClick={() => {
+                    router.back();
+                }}>
+                    <FontAwesomeIcon icon={faArrowLeft} size="1x" className="text-lg text-primary"/>
                     <span className="px-2">Zurück</span>
                 </button>
             </div>
@@ -79,15 +81,15 @@ export default function Contact() {
                         <span className="font-bold">Salon Hana</span>
                         <span className="pt-2">Jungstraße 10, 10247 Berlin</span>
                         <span className="text-primary font-semibold pt-2 cursor-pointer">
-              <FontAwesomeIcon icon={faPhone} size="1x" className="text-primary pr-2" />
+              <FontAwesomeIcon icon={faPhone} size="1x" className="text-primary pr-2"/>
               +49 160 7785184
             </span>
                         <span className="text-primary font-semibold pt-2 cursor-pointer">
-              <FontAwesomeIcon icon={faEnvelope} size="1x" className="text-primary pr-2" />
+              <FontAwesomeIcon icon={faEnvelope} size="1x" className="text-primary pr-2"/>
               salonhana@gmail.com
             </span>
                         <div className="font-semibold mt-8">
-                            <FontAwesomeIcon icon={faClock} size="1x" className="text-primary pr-2" />
+                            <FontAwesomeIcon icon={faClock} size="1x" className="text-primary pr-2"/>
                             Öffnungszeiten
                         </div>
                         <div className="flex flex-row">
@@ -119,7 +121,8 @@ export default function Contact() {
                                             className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-transparent focus:ring-0"
                                             placeholder="Name"
                                         />
-                                        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-500 peer-focus:w-full"></span>
+                                        <span
+                                            className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-500 peer-focus:w-full"></span>
                                         <label
                                             htmlFor="name"
                                             className="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
@@ -137,7 +140,8 @@ export default function Contact() {
                                             className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-transparent focus:ring-0"
                                             placeholder="Telefon"
                                         />
-                                        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-500 peer-focus:w-full"></span>
+                                        <span
+                                            className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-500 peer-focus:w-full"></span>
                                         <label
                                             htmlFor="phone"
                                             className="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
@@ -155,7 +159,8 @@ export default function Contact() {
                                             className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-transparent focus:ring-0"
                                             placeholder="E-Mail-Adresse"
                                         />
-                                        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-500 peer-focus:w-full"></span>
+                                        <span
+                                            className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-500 peer-focus:w-full"></span>
                                         <label
                                             htmlFor="email"
                                             className="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
@@ -173,7 +178,8 @@ export default function Contact() {
                         className="peer h-32 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-transparent focus:ring-0"
                         placeholder="Nachricht"
                     ></textarea>
-                                        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-500 peer-focus:w-full"></span>
+                                        <span
+                                            className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-500 peer-focus:w-full"></span>
                                         <label
                                             htmlFor="message"
                                             className="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-gray-600"
@@ -194,23 +200,25 @@ export default function Contact() {
                         </form>
                     </div>
                 </div>
-                <div>
-                    {apiKey && (
-                        <LoadScript googleMapsApiKey={apiKey}>
-                            <GoogleMap
-                                mapContainerStyle={containerStyle}
-                                center={center}
-                                zoom={14}
-                                onLoad={map => setMap(map)}
-                                onUnmount={() => setMap(null)}
-                            >
-                                {markers.map((marker, i) => (
-                                    <Marker key={i} position={marker.position} />
-                                ))}
-                            </GoogleMap>
-                        </LoadScript>
-                    )}
-                </div>
+
+            </div>
+            <div className="mt-8">
+                {apiKey && (
+                    // <GoogleMapsEmbed></GoogleMapsEmbed>
+                    <LoadScript googleMapsApiKey={apiKey}>
+                        <GoogleMap
+                            mapContainerStyle={containerStyle}
+                            center={center}
+                            zoom={14}
+                            onLoad={map => setMap(map)}
+                            onUnmount={() => setMap(null)}
+                        >
+                            {markers.map((marker, i) => (
+                                <Marker key={i} position={marker.position}/>
+                            ))}
+                        </GoogleMap>
+                    </LoadScript>
+                )}
             </div>
         </motion.div>
     );
