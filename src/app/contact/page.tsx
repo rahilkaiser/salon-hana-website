@@ -7,29 +7,10 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import {loadGoogleMaps} from "@/actions/actions";
-
-const center = {
-    lat: 52.512470,
-    lng: 13.466640
-};
-
-const markers = [
-    {
-        position: center,
-        title: 'Salon Hana',
-        content: "Jungstraße 10, 10247 Berlin"
-    }
-];
-
-const containerStyle = {
-    width: '100%',
-    height: '400px',
-    border: 'none',
-};
+import { GoogleMapsEmbed } from "@next/third-parties/google";
 
 export default function Contact() {
     const [apiKey, setApiKey] = useState<string | null>(null);
-    const [map, setMap] = useState<google.maps.Map | null>(null);
     const router = useRouter();
 
     const pageVariants = {
@@ -204,20 +185,13 @@ export default function Contact() {
             </div>
             <div className="mt-8">
                 {apiKey && (
-                    // <GoogleMapsEmbed></GoogleMapsEmbed>
-                    <LoadScript googleMapsApiKey={apiKey}>
-                        <GoogleMap
-                            mapContainerStyle={containerStyle}
-                            center={center}
-                            zoom={14}
-                            onLoad={map => setMap(map)}
-                            onUnmount={() => setMap(null)}
-                        >
-                            {markers.map((marker, i) => (
-                                <Marker key={i} position={marker.position}/>
-                            ))}
-                        </GoogleMap>
-                    </LoadScript>
+                    <GoogleMapsEmbed
+                    apiKey={apiKey}
+                    height={400}
+                    width="100%"
+                    mode="place"
+                    q="Jungstraße 10, 10247 Berlin"
+                    ></GoogleMapsEmbed>
                 )}
             </div>
         </motion.div>
