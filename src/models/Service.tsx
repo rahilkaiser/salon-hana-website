@@ -7,17 +7,17 @@ interface Service {
     buffertime_after: string;
     hide_duration: string;
     description: string;
-    is_public: string;  // Consider using boolean if applicable
-    is_active: string;  // Consider using boolean if applicable
+    is_public: string;  // Could be boolean
+    is_active: string;  // Could be boolean
     position: string;
     file_id: string | null;
     seo_url: string | null;
     min_time_till_event: string | null;
     max_time_till_event: string | null;
-    is_recurring: string;  // Consider using boolean if applicable
+    is_recurring: string;  // Could be boolean
     picture: string | null;
     picture_sub_path: string | null;
-    is_visible: string;  // Consider using boolean if applicable
+    is_visible: string;  // Could be boolean
     picture_path: string | null;
     price: string;
     plugin_invoice_tax_id: string | null;
