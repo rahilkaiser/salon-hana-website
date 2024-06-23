@@ -2,7 +2,6 @@
 
 import axios from "axios";
 import jsonrpc from "jsonrpc-lite";
-import {useJsApiLoader} from "@react-google-maps/api";
 
 /** Gets the Token to access the api
  *
@@ -84,6 +83,38 @@ export const getWorkers = async  (token:string | null) => {
         const response = await apiClient.post('/', {
             jsonrpc: '2.0',
             method: 'getUnitList',
+            id: 1
+        });
+        return response.data.result;
+    } catch (error) {
+        console.error('Error fetching events:', error);
+    }
+}
+
+/** Get The Workers
+ *
+ * @param token
+ */
+export const getCategories = async  (token:string | null) => {
+    const companyLogin = process.env.NEXT_PUBLIC_COMPANY_LOGIN;
+
+    if (!token) {
+        console.error("No token available.");
+        return;
+    }
+
+    const apiClient = axios.create({
+        baseURL: 'https://user-api.simplybook.me',
+        headers: {
+            'X-Company-Login': companyLogin,
+            'X-Token': token,
+        },
+    });
+
+    try {
+        const response = await apiClient.post('/', {
+            jsonrpc: '2.0',
+            method: 'getCategoriesList',
             id: 1
         });
         return response.data.result;

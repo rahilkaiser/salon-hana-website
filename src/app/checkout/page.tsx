@@ -9,17 +9,15 @@ import {useEffect} from "react";
 import useBookingStore from "@/store/useBookingStore";
 
 
-
-
 export default function Checkout() {
 
     const router = useRouter();
-    const { events, fetchEvents, fetchToken } = useBookingStore();
+    // const {events, fetchEvents, fetchToken} = useBookingStore();
 
     const pageVariants = {
-        initial: { opacity: 0, y: 20 },
-        in: { opacity: 1, y: 0 },
-        out: { opacity: 0, y: -20 }
+        initial: {opacity: 0, y: 20},
+        in: {opacity: 1, y: 0},
+        out: {opacity: 0, y: -20}
     };
 
     const pageTransition = {
@@ -32,26 +30,31 @@ export default function Checkout() {
     // fetchToken().then(fetchEvents);
 
     useEffect(() => {
-        fetchToken().then(r => fetchEvents() );
 
-    }, [fetchToken, fetchEvents]);
+            // fetchToken().then(async r => {
+            //
+            //     const events = fetchEvents()
+            // });
 
+
+
+    }, []);
 
 
     return (
         <div>
             <CheckoutInfo></CheckoutInfo>
             <div>
-                {events.length > 0 ? (
-                    events.map(event => (
-                        <div key={event.id}>
-                            <h3>{event.name}</h3>
-                            <p>{event.description}</p>
-                        </div>
-                    ))
-                ) : (
-                    <p>No events found.</p>
-                )}
+                {/*{events.length > 0 ? (*/}
+                {/*    events.map(event => (*/}
+                {/*        <div key={event.id}>*/}
+                {/*            <h3>{event.name}</h3>*/}
+                {/*            <p>{event.description}</p>*/}
+                {/*        </div>*/}
+                {/*    ))*/}
+                {/*) : (*/}
+                {/*    <p>No events found.</p>*/}
+                {/*)}*/}
             </div>
 
             {/*<motion.div*/}

@@ -29,7 +29,6 @@ export const Testimonials = () => {
                     slidesPerView={1}
                     pagination={{clickable: true}}
                     loop={true}
-                    onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
                 >
                     <SwiperSlide className="flex flex-col items-center justify-center space-y-4">

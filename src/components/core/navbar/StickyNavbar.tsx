@@ -8,10 +8,9 @@ import {
     NavbarMenuItem,
 } from "@nextui-org/react";
 import MainMenu from "@/components/core/menu/MainMenu";
-import SmoothScrollContainer from "@/components/core/smooth-scrollbar-container/SmoothScrollContainer";
 import {MenuToggleComponent} from "@/components/core/navbar/components/MenuToggleComponent";
 import {NavbarCTAButton} from "@/components/core/navbar/components/NavbarCTAButton";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Link from "next/link";
 import {useServiceStore} from "@/store/useServiceStore";
 import {usePathname} from "next/navigation";
@@ -23,6 +22,10 @@ export const StickyNavbar = () => {
         total,
         qty
     } = useServiceStore();
+
+
+    useEffect(() => {
+    }, []);
 
     const toggleMenu = () => {
         setMenuOpen(!isMenuOpen);

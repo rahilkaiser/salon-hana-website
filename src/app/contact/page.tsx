@@ -2,7 +2,6 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faEnvelope, faPhone, faClock } from "@fortawesome/free-solid-svg-icons";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
