@@ -9,6 +9,7 @@ interface BookingState {
     timeSlots: TimeSlot[];
     fetchWorkers: () => Promise<void>;
     fetchAvailableTimeSlots: (dateFrom: Date, dateTo: Date) => Promise<void>;
+    isLoadingTimeSlots: boolean;
     setSelectedWorker: (id: string | null) => void;
     selectedWorker: Worker | null;
     currentDate: Date;
@@ -22,57 +23,20 @@ interface BookingState {
 export const useBookingStore = create<BookingState>((set, get) => (
     {
         timeSlots: [],
-
-        //     {
-        //     "2024-06-24": {
-        //         "1": [
-        //             ["09:00:00", "09:45:00"]
-        //         ]
-        //     },
-        //     "2024-06-25": {
-        //         "1": [
-        //             ["10:00:00", "10:30:00"],
-        //             ["11:00:00", "11:30:00"]
-        //         ]
-        //     },
-        //     "2024-06-26": {
-        //         "1": [
-        //             ["10:00:00", "10:45:00"],
-        //             ["12:00:00", "12:45:00"]
-        //         ]
-        //     },
-        //     "2024-06-27": {
-        //         "1": [
-        //             ["09:30:00", "10:00:00"],
-        //             ["11:45:00", "12:15:00"]
-        //         ]
-        //     },
-        //     "2024-06-28": {
-        //         "1": [
-        //             ["11:00:00", "11:45:00"]
-        //         ]
-        //     },
-        //     "2024-06-29": {
-        //         "1": [
-        //         ]
-        //     },
-        //     "2024-06-30": {
-        //         "1": [
-        //         ]
-        //     }
-        // },
+        isLoadingTimeSlots: false,
         fetchAvailableTimeSlots: async (dateFrom: Date, dateTo: Date) => {
 
             const selServiceId = useServiceStore.getState().selectedService.id;
 
             if (selServiceId) {
+                set({isLoadingTimeSlots: true})
                 const freeTimeSlots = await getFreeTimeSlots(
                     parseInt(selServiceId),
                     formatDate(dateTo),
                     formatDate(dateFrom),
                 ).then(res => res.filter(slot => slot.type == "free")) as TimeSlot[];
                 console.log(freeTimeSlots);
-                set({timeSlots: freeTimeSlots});
+                set({timeSlots: freeTimeSlots, isLoadingTimeSlots: false});
             }
 
 
@@ -189,11 +153,17 @@ export const useBookingStore = create<BookingState>((set, get) => (
         goToNextWeek: () => {
             const nextWeekDate = new Date(get().currentDate.setDate(get().currentDate.getDate() + 7));
             set({currentDate: nextWeekDate});
+
+            const weekDates = get().getWeekDates();
+            get().fetchAvailableTimeSlots(weekDates[0], weekDates[weekDates.length - 1])
         },
 
         goToPreviousWeek: () => {
             const prevWeekDate = new Date(get().currentDate.setDate(get().currentDate.getDate() - 7));
             set({currentDate: prevWeekDate});
+
+            const weekDates = get().getWeekDates();
+            get().fetchAvailableTimeSlots(weekDates[0], weekDates[weekDates.length - 1])
         },
         initializeWeek: () => {
             let date = new Date();  // Use today's date

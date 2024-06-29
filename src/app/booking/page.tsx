@@ -9,6 +9,7 @@ import {CheckoutInfo} from "@/components/core/checkout-info/CheckoutInfo";
 import {useBookingStore} from "@/store/useBookingStore";
 import {TimeSlot} from "@/models/TimeSlot";
 import {addDurationToTime, formatDate} from "@/utils/Utils";
+import {Spinner} from "@nextui-org/spinner";
 
 export default function Booking() {
 
@@ -70,6 +71,7 @@ export default function Booking() {
         initializeWeek,
         timeSlots,
         fetchAvailableTimeSlots,
+        isLoadingTimeSlots,
     } = useBookingStore();
 
 
@@ -121,42 +123,49 @@ export default function Booking() {
                                 <button onClick={goToNextWeek}>Nächste Woche</button>
                             </div>
                         </div>
+                        {isLoadingTimeSlots ?
+                            <div className="flex justify-center items-center">
+                                <Spinner/>
+                            </div> :
 
-                        <div className="flex md:flex-row flex-col space-y-4 md:space-y-0 justify-between text-center">
-                            {weekDates.map((date, index) => {
-                                const slotKeys = Object.keys(timeSlots);
+                            <div
+                                className="flex md:flex-row flex-col space-y-4 md:space-y-0 justify-between text-center">
+                                {weekDates.map((date, index) => {
+                                        const slotKeys = Object.keys(timeSlots);
 
-                                const slots = timeSlots[slotKeys[index]] && timeSlots[slotKeys[index]]['1'] ? timeSlots[slotKeys[index]]['1'] : [];
+                                        const slots = timeSlots[slotKeys[index]] && timeSlots[slotKeys[index]]['1'] ? timeSlots[slotKeys[index]]['1'] : [];
 
-                                return (
-                                    <div className="flex-1" key={index}>
-                                        <h3>{date.toLocaleDateString()}</h3>
-                                        <p className="text-center font-bold">{['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'][date.getDay()]}</p>
+                                        return (
+                                            <div className="flex-1" key={index}>
+                                                <h3>{date.toLocaleDateString()}</h3>
+                                                <p className="text-center font-bold">{['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'][date.getDay()]}</p>
 
-                                        <div className="flex flex-col items-center w-full">
+                                                <div className="flex flex-col items-center w-full">
 
-                                            {timeSlots.length > 0 ? timeSlots.map((t: TimeSlot, idx: number) => {
+                                                    {timeSlots.length > 0 ? timeSlots.map((t: TimeSlot, idx: number) => {
 
-                                                const newTime = addDurationToTime(t.client_time.slice(0, 5), parseInt(selectedService.duration));
+                                                        const newTime = addDurationToTime(t.client_time.slice(0, 5), parseInt(selectedService.duration));
 
-                                                if (t.date == formatDate(date) ) {
-                                                    return (
-                                                        <button key={idx}
-                                                                className="flex-1 w-40 m-1 hover:bg-primary hover:text-white text-md border border-black p-4 rounded">
+                                                        if (t.date == formatDate(date)) {
+                                                            return (
+                                                                <button key={idx}
+                                                                        className="flex-1 w-40 m-1 hover:bg-primary hover:text-white text-md border border-black p-4 rounded">
                                                             <span
                                                                 key={idx}>
 
                                                                 {t.client_time} - {newTime}
                                                             </span>
-                                                        </button>);
-                                                }
-                                            }) : <p>-</p>}
-                                        </div>
-
-                                    </div>)
-                                    ;
-                            })}
-                        </div>
+                                                                </button>);
+                                                        }
+                                                    }) : <p>-</p>}
+                                                </div>
+                                            </div>
+                                        );
+                                    }
+                                )
+                                }
+                            </div>
+                        }
                     </div>
                 </div>
             </motion.div>
