@@ -9,6 +9,7 @@ import {faCheckCircle} from '@fortawesome/free-solid-svg-icons';
 import {useSearchParams} from "next/navigation";
 import {CartInfo} from "@/components/core/cart-info/CartInfo";
 import {Spinner} from "@nextui-org/spinner";
+import Link from "next/link";
 
 export default function Services() {
     // const searchParams = useSearchParams();
@@ -51,14 +52,17 @@ export default function Services() {
                 console.error('Error fetching API key:', error);
             }
         };
-        fetchData();
+        if (categories.length == 0 || services.length == 0) {
 
-    }, []);
+            fetchData();
+        }
+
+    }, [categories.length, fetchCategories, fetchEvents, services.length]);
 
 
     return (
         <div className="w-full py-8 text-start bg-accent sm:py-16">
-            <CartInfo></CartInfo>
+            {/*<CartInfo></CartInfo>*/}
             <div className="max-w-7xl mx-auto px-4 sm:px-8 flex md:flex-row flex-col">
                 <div className="md:w-1/4 px-4 py-4 md:py-0">
                     {!categoriesIsLoading ?
@@ -87,7 +91,7 @@ export default function Services() {
                     {!servicesIsLoading ?
                         <div>{
                             services.map((service, index) => (
-                                <div>
+                                <div key={service.id}>
                                     {service.categories.includes(selectedCategory?.id!) &&
                                         <div key={index}
                                              className="bg-white p-4 my-2 rounded-lg shadow-md">
@@ -103,19 +107,14 @@ export default function Services() {
                                                 </div>
                                                 <div className="flex flex-row space-x-2 items-center">
                                                     <p className="text-gray-800 font-semibold">{parseInt(service.price)} {service.currency}</p>
-                                                    {!cart.includes(service) ? <button
+                                                     <Link href={'/booking'}><button
                                                         onClick={() => {
                                                             addService(service);
                                                         }}
                                                         className=" w-24 m-3 text-pink-600 font-semibold border-pink-600 border rounded-lg py-2">
                                                         Auswählen
-                                                    </button> : <button
-                                                        onClick={() => {
-                                                            removeService(service);
-                                                        }}
-                                                        className=" m-3 p-1 text-green-600 font-semibold border-green-600 border rounded-lg py-2">
-                                                        Ausgewählt
-                                                    </button>}
+                                                    </button>
+                                                     </Link>
                                                 </div>
                                             </div>
                                         </div>

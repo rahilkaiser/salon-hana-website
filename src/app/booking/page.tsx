@@ -1,31 +1,28 @@
 "use client"
-import { motion } from "framer-motion";
-import {Dropdown, DropdownItem, DropdownMenu, DropdownTrigger} from "@nextui-org/dropdown";
-import {Button, Calendar, Divider} from "@nextui-org/react";
+import {motion} from "framer-motion";
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
-import {faArrowLeft, faArrowRight, faCheckCircle, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {Listbox, ListboxItem} from "@nextui-org/react";
 import {useRouter} from "next/navigation";
 import {useServiceStore} from "@/store/useServiceStore";
 import {CheckoutInfo} from "@/components/core/checkout-info/CheckoutInfo";
+import {useBookingStore} from "@/store/useBookingStore";
+import {TimeSlot} from "@/models/TimeSlot";
+import {addDurationToTime, formatDate} from "@/utils/Utils";
 
 export default function Booking() {
-    const [selectedKeys, setSelectedKeys] = useState(new Set(["erster_freier_mitarbeiter"]));
+
     const [selectedKeysTime, setSelectedKeysTime] = useState(new Set(["10:00"]));
-    const selectedValue = useMemo(
-        () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
-        [selectedKeys]
-    );
+
     const selectedValueTime = useMemo(
         () => Array.from(selectedKeysTime).join(", ").replaceAll("_", " "),
         [selectedKeysTime]
     );
 
     const pageVariants = {
-        initial: { opacity: 0, y: 20 },
-        in: { opacity: 1, y: 0 },
-        out: { opacity: 0, y: -20 }
+        initial: {opacity: 0, y: 20},
+        in: {opacity: 1, y: 0},
+        out: {opacity: 0, y: -20}
     };
 
     const pageTransition = {
@@ -60,10 +57,35 @@ export default function Booking() {
         qty,
         cart,
         removeService,
+        selectedService,
+        // onInit,
     } = useServiceStore();
 
+    const {
+        goToPreviousWeek,
+        goToNextWeek,
+        getWeekStartDate,
+        getWeekDates,
+        fetchWorkers,
+        initializeWeek,
+        timeSlots,
+        fetchAvailableTimeSlots,
+    } = useBookingStore();
 
+
+    const weekDates = getWeekDates();
     useEffect(() => {
+        initializeWeek()
+        const fetchData = async () => {
+            try {
+                await fetchWorkers();
+                await fetchAvailableTimeSlots(weekDates[0], weekDates[weekDates.length - 1])
+
+            } catch (error) {
+                console.error('Error fetching API key:', error);
+            }
+        };
+        fetchData();
         return () => removeWheelListener();
     }, [removeWheelListener]);
 
@@ -85,123 +107,59 @@ export default function Booking() {
                         <FontAwesomeIcon icon={faArrowLeft} size="1x" className="text-lg"/>
                         <span className="px-2">Zurück</span>
                     </button>
-
                 </div>
-                <div className="max-w-7xl mx-auto px-16 sm:px-8 ">
-                    <div className="flex flex-row justify-evenly w-full p-4 ">
-                        <div className="flex flex-col items-start justify-start w-1/4">
-                            <span className="py-2 font-semibold">Mitarbeiter wählen</span>
-                            <div className="py-2 w-full">
-                                <Dropdown>
-                                    <DropdownTrigger>
-                                        <Button
-                                            variant="bordered"
-                                            className="capitalize w-full justify-start text-md p-2 text-center rounded-none"
-                                            color={'primary'}
-                                        >
-                                            <FontAwesomeIcon icon={faUser}/>
-                                            {selectedValue}
-                                        </Button>
-                                    </DropdownTrigger>
-                                    <DropdownMenu
-                                        aria-label="Single selection example"
-                                        variant="light"
-                                        disallowEmptySelection
-                                        selectionMode="single"
-                                        selectedKeys={selectedKeys}
-                                        onSelectionChange={(key) => {
-                                            setSelectedKeys(key.valueOf() as Set<string>)
-
-                                        }}
-                                    >
-                                        <DropdownItem key="erster_freier_mitarbeiter">Erster freier
-                                            Mitarbeiter</DropdownItem>
-                                        <DropdownItem key="hanadi">Hanadi</DropdownItem>
-                                        <DropdownItem key="katja">Katja</DropdownItem>
-                                        <DropdownItem key="mariam">Mariam</DropdownItem>
-                                    </DropdownMenu>
-                                </Dropdown>
+                <div className="max-w-7xl mx-auto md:px-16">
+                    <div className="flex flex-col justify-center w-full p-4 ">
+                        <div className="w-full flex flex-row justify-between md:px-12 pb-12 space-x-4">
+                            <div>
+                                <button onClick={goToPreviousWeek}>Vorherige Woche</button>
                             </div>
-                            <Divider></Divider>
-                            <span className="py-2 font-semibold">Datum und Uhrzeit für den Termin wählen:</span>
-                            <div className="py-2 w-full ">
-                                <Calendar
-                                    aria-label="Date (Page Behaviour)"
-                                    pageBehavior="visible"
-                                />
+                            <div className="font-bold text-lg text-center">
+                                {weekDates[0].toLocaleDateString()} - {weekDates[weekDates.length - 1].toLocaleDateString()}
                             </div>
-                            <div ref={scrollRef}
-                                 onMouseEnter={addWheelListener}
-                                 onMouseLeave={removeWheelListener}
-                                 className="flex flex-col gap-1 overflow-y-auto max-h-80 overflow-x-hidden">
-                                <div
-                                    className="w-[260px] border-small  pr-2 py-2 rounded-small border-default-200 dark:border-default-100 ">
-                                    {["10:00", "10:20", "10:40", "11:00", "11:20", "11:40", "12:00", "12:20", "12:40", "13:00", "13:20", "13:40"].map(time => (
-                                        <Listbox key={time}
-                                                 aria-label="Time selection"
-                                                 disallowEmptySelection
-                                                 selectionMode="single"
-                                                 selectedKeys={selectedKeysTime}
-                                                 onSelectionChange={(keys => {
-                                                     setSelectedKeysTime(keys.valueOf() as Set<string>)
-                                                 })}>
-                                            <ListboxItem key={time} variant={"light"}
-                                                         hideSelectedIcon={true}
-                                            >
-                                                <div
-                                                    className={`flex items-center justify-center w-full py-2  rounded 
-                                                ${selectedKeysTime.has(time) ? 'bg-primary text-white' : 'bg-white text-gray-900'}`}>
-                                                    {time}
-                                                </div>
-                                            </ListboxItem>
-                                        </Listbox>
-                                    ))}
-                                </div>
+                            <div>
+                                <button onClick={goToNextWeek}>Nächste Woche</button>
                             </div>
                         </div>
-                        <div className="flex flex-col w-full font-semibold pl-8 items-stretch">
-                            <span className="mb-8">Ausgewählte Services</span>
-                            <Divider></Divider>
-                            {qty > 0 ?
-                                <div
-                                    className="w-full">
-                                    {cart.map((item) => (
-                                        <div key={item.title}
-                                             className="flex flex-row justify-between items-center bg-white shadow-md rounded-lg p-4 mb-4">
-                                            <div>
-                                                <h3 className="text-xl font-bold text-gray-800">{item.title}</h3>
-                                                <div className="flex flex-row">
-                                                    <p className="text-gray-600 mr-4">{item.time} Min.</p>
-                                                    <p className="text-gray-800 font-semibold cursor-pointer">Details
-                                                        anzeigen</p>
-                                                </div>
-                                            </div>
-                                            <button
-                                                onClick={() => {
-                                                    removeService(item);
-                                                }}
-                                                className="text-red-500 hover:text-red-700 font-semibold p-2 rounded-full">
-                                                <svg className="w-6 h-6" fill="none" stroke="currentColor"
-                                                     viewBox="0 0 24 24"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                                          d="M6 18L18 6M6 6l12 12"></path>
-                                                </svg>
-                                            </button>
+
+                        <div className="flex md:flex-row flex-col space-y-4 md:space-y-0 justify-between text-center">
+                            {weekDates.map((date, index) => {
+                                const slotKeys = Object.keys(timeSlots);
+
+                                const slots = timeSlots[slotKeys[index]] && timeSlots[slotKeys[index]]['1'] ? timeSlots[slotKeys[index]]['1'] : [];
+
+                                return (
+                                    <div className="flex-1" key={index}>
+                                        <h3>{date.toLocaleDateString()}</h3>
+                                        <p className="text-center font-bold">{['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'][date.getDay()]}</p>
+
+                                        <div className="flex flex-col items-center w-full">
+
+                                            {timeSlots.length > 0 ? timeSlots.map((t: TimeSlot, idx: number) => {
+
+                                                const newTime = addDurationToTime(t.client_time.slice(0, 5), parseInt(selectedService.duration));
+
+                                                if (t.date == formatDate(date) ) {
+                                                    return (
+                                                        <button key={idx}
+                                                                className="flex-1 w-40 m-1 hover:bg-primary hover:text-white text-md border border-black p-4 rounded">
+                                                            <span
+                                                                key={idx}>
+
+                                                                {t.client_time} - {newTime}
+                                                            </span>
+                                                        </button>);
+                                                }
+                                            }) : <p>-</p>}
                                         </div>
-                                    ))}
-                                </div> :
-                                <div className="flex items-center justify-center w-full">
-                                    keine Services ausgewählt
-                                </div>
 
-                            }
+                                    </div>)
+                                    ;
+                            })}
                         </div>
-
                     </div>
                 </div>
             </motion.div>
         </div>
-
     );
 }
