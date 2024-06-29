@@ -1,6 +1,6 @@
 "use client"
 import {motion} from "framer-motion";
-import {useCallback, useEffect, useMemo, useRef, useState} from "react";
+import {useEffect} from "react";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useRouter} from "next/navigation";
@@ -12,13 +12,6 @@ import {addDurationToTime, formatDate} from "@/utils/Utils";
 import {Spinner} from "@nextui-org/spinner";
 
 export default function Booking() {
-
-    const [selectedKeysTime, setSelectedKeysTime] = useState(new Set(["10:00"]));
-
-    const selectedValueTime = useMemo(
-        () => Array.from(selectedKeysTime).join(", ").replaceAll("_", " "),
-        [selectedKeysTime]
-    );
 
     const pageVariants = {
         initial: {opacity: 0, y: 20},
@@ -32,42 +25,16 @@ export default function Booking() {
         duration: 0.5
     };
 
-    const scrollRef = useRef<HTMLDivElement>(null);
-
-    const handleWheel = useCallback((event: WheelEvent) => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollTop += event.deltaY;
-            event.preventDefault();
-            event.stopPropagation();
-        }
-    }, []);
-
-    const addWheelListener = useCallback(() => {
-        scrollRef.current?.addEventListener('wheel', handleWheel);
-    }, [handleWheel]);
-
-    const removeWheelListener = useCallback(() => {
-        scrollRef.current?.removeEventListener('wheel', handleWheel);
-    }, [handleWheel]);
-
     const router = useRouter();
 
-
     const {
-        total,
-        qty,
-        cart,
-        removeService,
         selectedService,
-        // onInit,
     } = useServiceStore();
 
     const {
         goToPreviousWeek,
         goToNextWeek,
-        getWeekStartDate,
         getWeekDates,
-        fetchWorkers,
         initializeWeek,
         timeSlots,
         fetchAvailableTimeSlots,
@@ -80,16 +47,14 @@ export default function Booking() {
         initializeWeek()
         const fetchData = async () => {
             try {
-                await fetchWorkers();
                 await fetchAvailableTimeSlots(weekDates[0], weekDates[weekDates.length - 1])
-
             } catch (error) {
                 console.error('Error fetching API key:', error);
             }
         };
         fetchData();
-        return () => removeWheelListener();
-    }, [removeWheelListener]);
+
+    }, []);
 
 
     return (
@@ -131,10 +96,6 @@ export default function Booking() {
                             <div
                                 className="flex md:flex-row flex-col space-y-4 md:space-y-0 justify-between text-center">
                                 {weekDates.map((date, index) => {
-                                        const slotKeys = Object.keys(timeSlots);
-
-                                        const slots = timeSlots[slotKeys[index]] && timeSlots[slotKeys[index]]['1'] ? timeSlots[slotKeys[index]]['1'] : [];
-
                                         return (
                                             <div className="flex-1" key={index}>
                                                 <h3>{date.toLocaleDateString()}</h3>

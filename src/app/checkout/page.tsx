@@ -6,7 +6,6 @@ import {faArrowLeft, faUser} from "@fortawesome/free-solid-svg-icons";
 
 import {useRouter} from "next/navigation";
 import {useEffect} from "react";
-import useBookingStore from "@/store/useBookingStore";
 
 
 export default function Checkout() {

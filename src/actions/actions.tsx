@@ -33,7 +33,7 @@ export const getToken = async  () => {
  * @param token
  */
 export const getEvents = async  () => {
-    const companyLogin = process.env.NEXT_PUBLIC_COMPANY_LOGIN;
+    // const companyLogin = process.env.NEXT_PUBLIC_COMPANY_LOGIN;
 
     // if (!token) {
     //     console.error("No token available.");
