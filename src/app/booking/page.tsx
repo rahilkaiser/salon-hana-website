@@ -3,7 +3,7 @@ import {motion} from "framer-motion";
 import {useEffect} from "react";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {useRouter} from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import {useServiceStore} from "@/store/useServiceStore";
 import {CheckoutInfo} from "@/components/core/checkout-info/CheckoutInfo";
 import {useBookingStore} from "@/store/useBookingStore";
@@ -26,6 +26,7 @@ export default function Booking() {
     };
 
     const router = useRouter();
+    const pathName = usePathname();
 
     const {
         selectedService,
@@ -42,11 +43,13 @@ export default function Booking() {
     } = useBookingStore();
 
 
-    const weekDates = getWeekDates();
+    let weekDates = getWeekDates();
+
     useEffect(() => {
-        initializeWeek()
         const fetchData = async () => {
             try {
+                initializeWeek()
+                weekDates = getWeekDates();
                 await fetchAvailableTimeSlots(weekDates[0], weekDates[weekDates.length - 1])
             } catch (error) {
                 console.error('Error fetching API key:', error);
@@ -54,7 +57,7 @@ export default function Booking() {
         };
         fetchData();
 
-    }, []);
+    }, [pathName]);
 
 
     return (

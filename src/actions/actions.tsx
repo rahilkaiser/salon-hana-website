@@ -32,28 +32,40 @@ export const getToken = async  () => {
  *
  * @param token
  */
-export const getEvents = async  () => {
-    // const companyLogin = process.env.NEXT_PUBLIC_COMPANY_LOGIN;
+export const getEvents = (maxRetries = 3) => {
+    const url = 'https://sugarbeautyroomberlin.simplybook.it/v2/service/';
+    let attempts = 0;
 
-    // if (!token) {
-    //     console.error("No token available.");
-    //     return;
-    // }
-    //
-    // const apiClient = axios.create({
-    //     baseURL: 'https://user-api.simplybook.me',
-    //     headers: {
-    //         'X-Company-Login': companyLogin,
-    //         'X-Token': token,
-    //     },
-    // });
+    const fetchEvents = (resolve, reject) => {
+        if (attempts >= maxRetries) {
+            reject(new Error('Max retries reached, giving up.'));
+            return;
+        }
 
-    try {
-        return await fetch('https://sugarbeautyroomberlin.simplybook.it/v2/service/',{method:'GET'}).then(response => response.json());
-    } catch (error) {
-        console.error('Error fetching events:', error);
-    }
+        attempts++;
+        fetch(url, { method: 'GET' })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data) {
+                    resolve(data);
+                } else {
+                    throw new Error('No data received, retrying...');
+                }
+            })
+            .catch(error => {
+                console.error(`Attempt ${attempts} failed: ${error.message}`);
+                setTimeout(() => fetchEvents(resolve, reject), 1000 * attempts);
+            });
+    };
+
+    return new Promise(fetchEvents);
 }
+
 
 
 export const getWorkers = async  () => {
@@ -90,33 +102,41 @@ export const getWorkers = async  () => {
  *
  * @param token
  */
-export const getCategories = async  () => {
+export const getCategories = (maxRetries = 3) => {
     const companyLogin = process.env.NEXT_PUBLIC_COMPANY_LOGIN;
+    const url = 'https://sugarbeautyroomberlin.simplybook.it/v2/ext/category/';
+    let attempts = 0;
 
-    // if (!token) {
-    //     console.error("No token available.");
-    //     return;
-    // }
+    const fetchCategories = (resolve, reject) => {
+        if (attempts >= maxRetries) {
+            reject(new Error('Max retries reached, giving up.'));
+            return;
+        }
 
-    // const apiClient = axios.create({
-    //     baseURL: 'https://sugarbeautyroomberlin.simplybook.it/v2/ext/category/',
-    //     headers: {
-    //         'X-Company-Login': companyLogin,
-    //         'X-Token': token,
-    //     },
-    // });
+        attempts++;
+        fetch(url, { method: 'GET' })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data) {
+                    resolve(data);
+                } else {
+                    throw new Error('No data received, retrying...');
+                }
+            })
+            .catch(error => {
+                console.error(`Attempt ${attempts} failed: ${error.message}`);
+                setTimeout(() => fetchCategories(resolve, reject), 1000 * attempts);
+            });
+    };
 
-    try {
-        // const response = await apiClient.post('/', {
-        //     jsonrpc: '2.0',
-        //     id: 1
-        // });
-
-        return await fetch('https://sugarbeautyroomberlin.simplybook.it/v2/ext/category/',{method:'GET'}).then(response => response.json());
-    } catch (error) {
-        console.error('Error fetching events:', error);
-    }
+    return new Promise(fetchCategories);
 }
+
 
 /**
  * Fetches available booking days for a specified service, provider, and date range.
@@ -147,24 +167,60 @@ export const getCategories = async  () => {
 //     }
 // }
 
-export const getFreeTimeSlots = async  (
-    serviceId:number,
-    dateTo: string,
-    dateFrom: string,
-) => {
+// export const getFreeTimeSlots = async  (
+//     serviceId:number,
+//     dateTo: string,
+//     dateFrom: string,
+// ) => {
+//     const companyLogin = process.env.NEXT_PUBLIC_COMPANY_LOGIN;
+//
+//
+//     // 'https://sugarbeautyroomberlin.simplybook.it/v2/booking/time-slots/?from=2024-07-01&to=2024-07-07&location=&provider=3&service=60&count=1&booking_id='
+//
+//     try {
+//         const provider = 'any';
+//
+//         return await fetch(`https://sugarbeautyroomberlin.simplybook.it/v2/booking/time-slots/?from=${dateFrom}&to=${dateTo}&provider=${provider}&service=${serviceId}`).then(response => response.json());
+//     } catch (error) {
+//         console.error('Error fetching events:', error);
+//     }
+// }
+
+export const getFreeTimeSlots = (serviceId, dateTo,dateFrom, maxRetries = 3) => {
     const companyLogin = process.env.NEXT_PUBLIC_COMPANY_LOGIN;
+    const url = `https://sugarbeautyroomberlin.simplybook.it/v2/booking/time-slots/?from=${dateFrom}&to=${dateTo}&provider=any&service=${serviceId}`;
+    let attempts = 0;
 
+    const fetchTimeSlots = (resolve, reject) => {
+        if (attempts >= maxRetries) {
+            reject(new Error('Max retries reached, giving up.'));
+            return;
+        }
 
-    // 'https://sugarbeautyroomberlin.simplybook.it/v2/booking/time-slots/?from=2024-07-01&to=2024-07-07&location=&provider=3&service=60&count=1&booking_id='
+        attempts++;
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data) {
+                    resolve(data);
+                } else {
+                    throw new Error('No data received, retrying...');
+                }
+            })
+            .catch(error => {
+                console.error(`Attempt ${attempts} failed: ${error.message}`);
+                setTimeout(() => fetchTimeSlots(resolve, reject), 1000 * attempts);
+            });
+    };
 
-    try {
-        const provider = 'any';
-
-        return await fetch(`https://sugarbeautyroomberlin.simplybook.it/v2/booking/time-slots/?from=${dateFrom}&to=${dateTo}&provider=${provider}&service=${serviceId}&location=&booking_id=`).then(response => response.json());
-    } catch (error) {
-        console.error('Error fetching events:', error);
-    }
+    return new Promise(fetchTimeSlots);
 }
+
 
 
 /** Google Maps Registration
