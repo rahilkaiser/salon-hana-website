@@ -5,7 +5,6 @@ import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {usePathname, useRouter} from "next/navigation";
 import {useServiceStore} from "@/store/useServiceStore";
-import {CheckoutInfo} from "@/components/core/checkout-info/CheckoutInfo";
 import {useBookingStore} from "@/store/useBookingStore";
 import {TimeSlot} from "@/models/TimeSlot";
 import {addDurationToTime, formatDate} from "@/utils/Utils";
@@ -30,6 +29,7 @@ export default function Booking() {
 
     const {
         selectedService,
+        selectedCategory
     } = useServiceStore();
 
     const {
@@ -40,6 +40,8 @@ export default function Booking() {
         timeSlots,
         fetchAvailableTimeSlots,
         isLoadingTimeSlots,
+        selectedBookingDetails,
+        setSelectedBookingDetails,
     } = useBookingStore();
 
 
@@ -62,7 +64,6 @@ export default function Booking() {
 
     return (
         <div>
-            <CheckoutInfo></CheckoutInfo>
             <motion.div
                 initial="initial"
                 animate="in"
@@ -113,6 +114,19 @@ export default function Booking() {
                                                         if (t.date == formatDate(date)) {
                                                             return (
                                                                 <button key={idx}
+                                                                        onClick={() => {
+                                                                            setSelectedBookingDetails(
+                                                                                {
+                                                                                    selectedService:selectedService,
+                                                                                    bookingDate: date,
+                                                                                    selectedCategory: selectedCategory,
+                                                                                    timeSlot: t
+
+                                                                                }
+                                                                            )
+                                                                            // Select TimeSlot + date + category + duration + Total
+                                                                            router.push('/booking-confirm');
+                                                                        }}
                                                                         className="flex-1 w-40 m-1 hover:bg-primary hover:text-white text-md border border-black p-4 rounded">
                                                             <span
                                                                 key={idx}>

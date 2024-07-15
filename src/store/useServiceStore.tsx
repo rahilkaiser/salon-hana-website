@@ -20,7 +20,8 @@ type ServiceStore = {
 }
 
 
-export const useServiceStore = create<ServiceStore>()(persist(
+export const useServiceStore = create<ServiceStore>()(
+    persist(
     (set, get) => (
     {
         total: 0,

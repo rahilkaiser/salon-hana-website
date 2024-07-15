@@ -1,27 +1,55 @@
-import {getEvents, getFreeTimeSlots, getToken, getWorkers} from "@/actions/actions";
+import {getFreeTimeSlots} from "@/actions/actions";
 import {create} from "zustand";
 import {useServiceStore} from "@/store/useServiceStore";
 import {TimeSlot} from "@/models/TimeSlot";
 import {formatDate} from "@/utils/Utils";
 
+interface UserDetails {
+    name: string;
+    email: string;
+    phoneNumber: string;
+}
+
+interface BookingDetails {
+    selectedService: Service,
+    selectedCategory: Category,
+    bookingDate: Date,
+    timeSlot: TimeSlot
+}
+
+
 interface BookingState {
-    workers: Worker[];
     timeSlots: TimeSlot[];
-    fetchWorkers: () => Promise<void>;
     fetchAvailableTimeSlots: (dateFrom: Date, dateTo: Date) => Promise<void>;
     isLoadingTimeSlots: boolean;
-    setSelectedWorker: (id: string | null) => void;
-    selectedWorker: Worker | null;
     currentDate: Date;
     getWeekStartDate: (date: Date) => Date;
     getWeekDates: () => Date[];
     goToNextWeek: () => void;
     goToPreviousWeek: () => void;
     initializeWeek: () => void;
+    userDetails: UserDetails;
+    setUserDetails: (details: Partial<UserDetails>) => void;
+    selectedBookingDetails: BookingDetails;
 }
 
 export const useBookingStore = create<BookingState>((set, get) => (
     {
+        userDetails: {
+            name: '',
+            email: '',
+            phoneNumber: '',
+        },
+        selectedBookingDetails: {
+            bookingDate: null,
+            timeSlot: null,
+            selectedService: useServiceStore.getState().selectedService,
+            selectedCategory: useServiceStore.getState().selectedCategory,
+        },
+        setSelectedBookingDetails: (details: BookingDetails) =>
+            set((state) => ({ selectedBookingDetails: { ...state.selectedBookingDetails, ...details } })),
+        setUserDetails: (details) =>
+            set((state) => ({userDetails: {...state.userDetails, ...details}})),
         timeSlots: [],
         isLoadingTimeSlots: false,
         fetchAvailableTimeSlots: async (dateFrom: Date, dateTo: Date) => {
@@ -34,7 +62,7 @@ export const useBookingStore = create<BookingState>((set, get) => (
                     parseInt(selServiceId),
                     formatDate(dateTo),
                     formatDate(dateFrom),
-                ).then(res => res.filter(slot => slot.type == "free")) as TimeSlot[];
+                ).then((res:any) => res.filter(slot => slot.type == "free")) as TimeSlot[];
                 console.log(freeTimeSlots);
                 set({timeSlots: freeTimeSlots, isLoadingTimeSlots: false});
             }
@@ -87,24 +115,5 @@ export const useBookingStore = create<BookingState>((set, get) => (
             }
 
             set({currentDate: date});
-        },
-        workers: [],
-        selectedWorker: null,
-        setSelectedWorker: (id) => {
-            if (id == "erster_freier_mitarbeiter") {
-                set({
-                    selectedWorker: null,
-                });
-                return;
-            }
-            const w = get().workers.find((worke) => worke.id === id);
-            set({
-                selectedWorker: w,
-            });
-        },
-        fetchWorkers: async () => {
-            const res = await getWorkers();
-            set({workers: Object.values(res)});
-            console.log("WORKERS", res);
         },
     }));
